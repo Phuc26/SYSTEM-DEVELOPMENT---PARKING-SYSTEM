@@ -1,9 +1,11 @@
 <?php
 namespace app\models;
 
-class Main extends \app\core\Model {
+class Lot extends \app\core\Model {
 
 	function __construct() {
 		parent::__construct();
 	}
+
+	// Add CRUD operations here.
 }

@@ -1,7 +1,7 @@
 <?php
 namespace app\models;
 
-class Main extends \app\core\Model {
+class Location extends \app\core\Model {
 
 	function __construct() {
 		parent::__construct();
