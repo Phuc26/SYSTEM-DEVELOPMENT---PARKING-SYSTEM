@@ -4,6 +4,7 @@
   padding: 0;
   outline: none;
   font-family: 'Poppins', sans-serif;
+
 }
 body{
   display: flex;
@@ -11,18 +12,25 @@ body{
   justify-content: center;
   min-height: 100vh;
   overflow: hidden;
-  background: url("bg.png"), -webkit-linear-gradient(bottom, #00000060, #434344);
+  background-image: url("/resources/images/bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 ::selection{
   color: #fff;
   background: #d43f8d;
 }
+
 .container{
   width: 330px;
   background: #fff;
   text-align: center;
   border-radius: 5px;
   padding: 50px 35px 10px 35px;
+  background: -webkit-linear-gradient(bottom, #C3BFBE, #FFFFFF)
+}
+.container img {
+  width: 250px;
 }
 .container header{
   font-size: 35px;
