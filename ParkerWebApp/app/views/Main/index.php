@@ -49,7 +49,7 @@
             </div>
          </div>
          <div class="form-outer">
-            <form action="#">
+            <form action='' method='post'>
                <div class="page slide-page">
                   <div class="title">
                      Car information:
@@ -58,7 +58,7 @@
                      <div class="label">
                         License plate
                      </div>
-                     <input type="text">
+                     <input type="text" id="license" name="license" required />
                   </div>
                   <!-- <div class="field">
                      <div class="label">
@@ -66,7 +66,7 @@
                      </div> 
                      <input type="text">
                   </div> -->
-                  <div class="field">
+                  <div class="field btns">
                      <button class="firstNext next">Next</button>
                   </div>
                </div>
@@ -131,18 +131,12 @@
                   <div class="title">
                      Parking confirmation:
                   </div>
-                  <!-- <div class="field">
-                     <div class="label">
-                        Username
-                     </div>
-                     <input type="text">
-                  </div>
-                  <div class="field">
-                     <div class="label">
-                        Password
-                     </div>
-                     <input type="password">
-                  </div> -->
+                  <form>
+                     <label for="fname">License Plate:</label>
+                     <input type="text" id="license" name="license" value="" readonly><br>
+                     <label for="lname">Location:</label><br>
+                     <input type="text" id="location" name="location" value="" readonly><br>
+                  </form>
                   <div class="field btns">
                      <button class="prev-3 prev">Previous</button>
                      <button class="submit">Pay</button>
