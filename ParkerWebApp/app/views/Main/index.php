@@ -49,7 +49,7 @@
             </div>
          </div>
          <div class="form-outer">
-            <form action='' method='post'>
+            <form name="myForm" action='' method='post'>
                <div class="page slide-page">
                   <div class="title">
                      Car information:
@@ -67,7 +67,7 @@
                      <input type="text">
                   </div> -->
                   <div class="field btns">
-                     <button class="firstNext next">Next</button>
+                     <button onClick="validateForm()" class="firstNext next">Next</button>
                   </div>
                </div>
                <div class="page">
@@ -90,7 +90,7 @@
                     <div class="label">
                        Parking location
                     </div>
-                    <select>
+                    <select name="locationlist" required>
                         <option>--Choose--</option>
                        <option>Laval</option>
                        <option>Longeuil</option>
@@ -134,8 +134,10 @@
                   <form>
                      <label for="fname">License Plate:</label>
                      <input type="text" id="license" name="license" value="" readonly><br>
-                     <label for="lname">Location:</label><br>
+                     <label for="lname">Location:</label>
                      <input type="text" id="location" name="location" value="" readonly><br>
+                     <label for="lname">Time:</label>
+                     <input type="text" id="time" name="time" value="" readonly><br>
                   </form>
                   <div class="field btns">
                      <button class="prev-3 prev">Previous</button>
@@ -145,6 +147,15 @@
             </form>
          </div>
       </div>
-      <script src="/resources/scripts/script.js"></script>
+      <script src="/resources/scripts/script.js">
+
+         function validateForm() {
+            let x = document.forms["myForm"]["license"].value;
+            if (x == "") {
+               alert("Name must be filled out");
+               return false;
+            }
+         }
+      </script>
    </body>
 </html>
