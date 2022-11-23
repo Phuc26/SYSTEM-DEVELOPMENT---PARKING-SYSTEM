@@ -11,101 +11,67 @@
          <img src="/resources/images/logo.png" alt="VIP Valet Logo">
          <header>Reserve your parking</header>
          <div class="progress-bar">
+
             <div class="step">
-               <p>
-                  Plate
-               </p>
-               <div class="bullet">
-                  <span>1</span>
-               </div>
+               <p>Plate</p>
+               <div class="bullet"><span>1</span></div>
                <div class="check fas fa-check"></div>
             </div>
+
             <div class="step">
-               <p>
-                  Location
-               </p>
-               <div class="bullet">
-                  <span>2</span>
-               </div>
+               <p>Location</p>
+               <div class="bullet"><span>2</span></div>
                <div class="check fas fa-check"></div>
             </div>
+
             <div class="step">
-               <p>
-                  Time
-               </p>
-               <div class="bullet">
-                  <span>3</span>
-               </div>
+               <p>Time</p>
+               <div class="bullet"><span>3</span></div>
                <div class="check fas fa-check"></div>
             </div>
+
             <div class="step">
-               <p>
-                  Receipt
-               </p>
-               <div class="bullet">
-                  <span>4</span>
-               </div>
+               <p>Receipt</p>
+               <div class="bullet"><span>4</span></div>
                <div class="check fas fa-check"></div>
             </div>
+
          </div>
+
          <div class="form-outer">
             <form name="myForm" action='' method='post'>
+
                <div class="page slide-page">
-                  <div class="title">
-                     Car information:
-                  </div>
+                  <div class="title">Car information</div>
                   <div class="field">
-                     <div class="label">
-                        License plate
-                     </div>
-                     <input type="text" id="license" name="license" required />
+                     <div class="label">License plate</div>
+                     <input type="text" id="license" name="license" required>
                   </div>
-                  <!-- <div class="field">
-                     <div class="label">
-                        Last Name
-                     </div> 
-                     <input type="text">
-                  </div> -->
                   <div class="field btns">
-                     <button onClick="validateForm()" class="firstNext next">Next</button>
+                     <button class="firstNext next">Next</button>
                   </div>
                </div>
+
                <div class="page">
-                  <div class="title">
-                     Location:
-                  </div>
-                  <!-- <div class="field">
-                     <div class="label">
-                        Email Address
-                     </div>
-                     <input type="text">
-                  </div>
+                  <div class="title">Location</div>
+
                   <div class="field">
-                     <div class="label">
-                        Phone Number
-                     </div>
-                     <input type="Number">
-                  </div> -->
-                  <div class="field">
-                    <div class="label">
-                       Parking location
-                    </div>
-                    <select name="locationlist" required>
-                        <option>--Choose--</option>
-                       <option>Laval</option>
-                       <option>Longeuil</option>
-                     <!--  <option>Other</option> -->
+                     <div class="label">Parking location</div>
+                     <select name="locationlist" required>
+                        <option disabled selected>--Choose a Location--</option>
+                        <option>Laval</option>
+                        <option>Longeuil</option>
                     </select>
-                 </div>
+                  </div>
+
                   <div class="field btns">
                      <button class="prev-1 prev">Previous</button>
                      <button class="next-1 next">Next</button>
                   </div>
                </div>
+
                <div class="page">
-                  <div class="title">
-                     Parking duration
-                  </div>
+                  <div class="title">Parking duration</div>
                   <div class="field">
                      <div class="label">
                         Today date
@@ -127,10 +93,9 @@
                      <button class="next-2 next">Next</button>
                   </div>
                </div>
+
                <div class="page">
-                  <div class="title">
-                     Parking confirmation:
-                  </div>
+                  <div class="title">Parking confirmation</div>
                   <form>
                      <label for="fname">License Plate:</label>
                      <input type="text" id="license" name="license" value="" readonly><br>
@@ -147,15 +112,5 @@
             </form>
          </div>
       </div>
-      <script src="/resources/scripts/script.js">
-
-         function validateForm() {
-            let x = document.forms["myForm"]["license"].value;
-            if (x == "") {
-               alert("Name must be filled out");
-               return false;
-            }
-         }
-      </script>
    </body>
 </html>
