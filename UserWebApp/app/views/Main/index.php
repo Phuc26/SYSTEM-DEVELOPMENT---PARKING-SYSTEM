@@ -6,15 +6,40 @@
 	<!-- JavaScript Bundle with Popper -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
-	<title>Home</title>
+	<title>Login</title>
+	<link rel="stylesheet" type="text/css" href="/resources/scripts/style.css">
 
 </head>
 
 <body>
 
-	<div class='container'>
-		<h1>Home</h1>
-		<p>Welcome. This will be our web app.</p>
+	
+
+
+	<div class="login">
+		<div class="logo">
+			<img src="/resources/images/logo.png">
+		</div>
+		<div class="title">Login</div>
+		<div class="subtitle">Parking Services</div>
+		<div class="form">
+			<div class="username">
+				<input type="text" name="username" placeholder="Username">
+			</div>
+			<div class="password">
+				<input type="password" name="password" placeholder="Password">
+			</div>
+			<div class="options">
+				<div class="remember-me">
+					<input type="checkbox" id="remember-me">
+					<label for="remember-me">Remember me?</label>
+				</div>
+				<div class="forgot-password">
+					<a href="#">Forgot Password?</a>
+				</div>
+			</div>
+
+		</div>
 	</div>
 
 </body>
