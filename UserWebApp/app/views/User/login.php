@@ -15,26 +15,30 @@
 		<?php $this->view('shared/navbar'); ?>
 
 		<div class="container-lg">
+
 			<!-- Login Form -->
-			<div class="login">
-				<h1>Login</h1><hr>
-				<form method="post" action="">
-	               	<div class="mb-2"> 
-	                  	<input type="text" class="form-control" name="username" placeholder="Username">
-	              	</div>
+			<div class="row justify-content-center">
+				<div class="col-lg-4 justify-content-center">
+					<h1>Login</h1><hr>
+					<form method="post" action="">
+		               	<div class="mb-2"> 
+		                  	<input type="text" class="form-control" name="username" placeholder="Username">
+		              	</div>
 
-	              	<div class="mb-2"> 
-	                  <input type="password" class="form-control" name="password" placeholder="Password">
-	               	</div>
+		              	<div class="mb-3"> 
+		                  <input type="password" class="form-control" name="password" placeholder="Password">
+		               	</div>
 
-	               	<div class="mb-3"> 
-						<input type="checkbox" class="form-check-input" id="remember-me">
-	                  	<label for="remember-me">Remember me</label>
-	                  	<a href="#" class="forgot">Forgot Password?</a>
-	               	</div>
+		               	<div class="mb-3"> 
+							<input type="checkbox" class="form-check-input" id="remember-me">
+		                  	<label for="remember-me">Remember me</label>
+		                  	<a href="#" class="forgot">Forgot Password?</a>
+		               	</div>
 
-               		<button type="submit" name="action" class="btn btn-primary">Login</button>
-				</form>
+	               		<button type="submit" name="action" class="btn btn-primary">Login</button>
+					</form>
+				</div>
+				
 			</div>
 		</div>
 		
