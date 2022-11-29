@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-md bg-light">
 	<div class="container-xxl">
-		<a class="navbar-brand" href="/Main/index.php">
+		<a class="navbar-brand" href="/Dashboard/index.php">
 	      	<span class="display-6">VIP</span>
 	      	<span class="fw-light text-secondary display-6">Valet</span>
 	    </a>
