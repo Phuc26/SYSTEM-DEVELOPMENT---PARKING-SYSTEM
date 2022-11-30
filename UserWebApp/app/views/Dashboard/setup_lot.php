@@ -16,7 +16,7 @@
 
 		<div class="container-lg">
 			<h1>Set Up a Parking Lot</h1><hr>
-			<div class="row ">
+			<div class="row">
 				<div class="col-md-6">
 					ADD FORM
 				</div>
