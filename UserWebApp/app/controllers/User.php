@@ -20,6 +20,7 @@ class User extends \app\core\Controller {
 					$_SESSION['user_id'] 	= $user->user_id;
 					$_SESSION['username'] 	= $user->username;
 					$_SESSION['role'] 		= $user->role;
+					$_SESSION['seeRevenue'] = $user->seeRevenue;
 				} else {
 					$this->view('User/login', 'Incorrect username/password combination.');
 					echo '<script>alert("Incorrect username/password combination")</script>';
