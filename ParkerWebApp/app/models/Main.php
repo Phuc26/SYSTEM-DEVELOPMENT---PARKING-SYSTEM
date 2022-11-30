@@ -7,10 +7,6 @@ class Main extends \app\core\Model {
 		parent::__construct();
 	}
 
-	function exists() { 
-		return $this->get($this->username) != false;
-	}
-	
 	function insert(){
 		$SQL = 'INSERT INTO transaction() VALUES(:)';
 		$STMT = self::$_connection->prepare($SQL);

@@ -5,7 +5,8 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, inital-scale=1, shrink-to-fit=no">
 		<title>Dashboard</title>
-		<link rel="stylesheet" href="resources/styles/styles.css">
+		<link rel="stylesheet" href="/resources/styles/styles.css">
+
 
 		<!-- Bootstrap CSS -->
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
@@ -16,7 +17,11 @@
 
 		<div class="container">		
 			<h1>Dashboard</h1><hr>
+
+			<!-- First row -->
 			<div class="row justify-content-center">
+
+				<!-- ADMIN / TECHNICAN: Set up lot -->
 				<div class="col-lg-3 col-md-6 mb-4">
 					<div class="card"> 
 						<svg xmlns="http://www.w3.org/2000/svg" width="50%" height="50%" fill="currentColor" class="bi bi-p-square-fill mx-auto my-2" viewBox="0 0 16 16">
@@ -24,12 +29,13 @@
 							<path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2Zm3.5 4.002h2.962C10.045 4.002 11 5.104 11 6.586c0 1.494-.967 2.578-2.55 2.578H6.784V12H5.5V4.002Z"/>
 						</svg>
 						<div class="card-body text-center">
-							<p class="card-text">Set up a parking lot</p>
-							<a href="#" class="stretched-link"></a>
+							<p class="card-text">Set Up a Parking Lot</p>
+							<?php echo "<a href='/Dashboard/setup_lot' class='stretched-link'></a>" ?>
 						</div>
 					</div>
 				</div>
 
+				<!-- ADMIN / TECHNICAN: View lot -->
 				<div class="col-lg-3 col-md-6 mb-4">
 					<div class="card"> 
 						<svg xmlns="http://www.w3.org/2000/svg" width="50%" height="50%" fill="currentColor" class="bi bi-eye-fill mx-auto my-2" viewBox="0 0 16 16">
@@ -38,11 +44,12 @@
 						</svg>
 						<div class="card-body text-center">
 							<p class="card-text">View Parking Lot Details</p>
-							<a href="#" class="stretched-link"></a>
+							<?php echo "<a href='/Dashboard/view_lot' class='stretched-link'></a>" ?>
 						</div>
 					</div>
 				</div>
 
+				<!-- ADMIN / TECHNICAN: Update lot -->
 				<div class="col-lg-3 col-md-6 mb-4">
 					<div class="card"> 
 						<svg xmlns="http://www.w3.org/2000/svg" width="50%" height="50%" fill="currentColor" class="bi bi-arrow-clockwise mx-auto my-2" viewBox="0 0 16 16">
@@ -51,11 +58,12 @@
 						</svg>
 						<div class="card-body text-center">
 							<p class="card-text">Update Parking Lot Details</p>
-							<a href="#" class="stretched-link"></a>
+							<?php echo "<a href='/Dashboard/update_lot' class='stretched-link'></a>" ?>
 						</div>
 					</div>
 				</div>
 
+				<!-- ADMIN / TECHNICAN: Disable lot -->
 				<div class="col-lg-3 col-md-6 mb-4">
 					<div class="card"> 
 						<svg xmlns="http://www.w3.org/2000/svg" width="50%" height="50%" fill="currentColor" class="bi bi-sign-stop-fill mx-auto my-2" viewBox="0 0 16 16">
@@ -64,13 +72,16 @@
 						</svg>
 						<div class="card-body text-center">
 							<p class="card-text">Disable Parking Lot</p>
-							<a href="#" class="stretched-link"></a>
+							<?php echo "<a href='/Dashboard/disable_lot' class='stretched-link'></a>" ?>
 						</div>
 					</div>
 				</div>
 			</div>
 
+			<!-- Second row -->
 			<div class="row justify-content-center mb-4"> 
+
+				<!-- ADMIN / TECHNICAN / MANAGER: Change rates -->
 				<div class="col-lg-3 col-md-6 mb-4">
 					<div class="card"> 
 						<svg xmlns="http://www.w3.org/2000/svg" width="50%" height="50%" fill="currentColor" class="bi bi-currency-dollar mx-auto my-2" viewBox="0 0 16 16">
@@ -78,11 +89,12 @@
 						</svg>
 						<div class="card-body text-center">
 							<p class="card-text">Modify Parking Rates</p>
-							<a href="#" class="stretched-link"></a>
+							<?php echo "<a href='/Dashboard/#' class='stretched-link'></a>" ?>
 						</div>
 					</div>
 				</div>
 
+				<!-- seeRevenue = TRUE: View revenue -->
 				<div class="col-lg-3 col-md-6 mb-4">
 					<div class="card"> 
 						<svg xmlns="http://www.w3.org/2000/svg" width="50%" height="50%" fill="currentColor" class="bi bi-cash-coin mx-auto my-2" viewBox="0 0 16 16">
@@ -93,13 +105,30 @@
 						</svg>
 						<div class="card-body text-center">
 							<p class="card-text">View Revenue</p>
-							<a href="#" class="stretched-link"></a>
+							<?php echo "<a href='/Dashboard/#' class='stretched-link'></a>" ?>
+						</div>
+					</div>
+				</div>
+
+				<!-- ADMIN / TECHNICAN: Set up account -->
+				<div class="col-lg-3 col-md-6 mb-4">
+					<div class="card"> 
+						<svg xmlns="http://www.w3.org/2000/svg" width="50%" height="50%" fill="currentColor" class="bi bi-person-fill-add mx-auto my-2" viewBox="0 0 16 16">
+							<path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0Zm-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
+							<path d="M2 13c0 1 1 1 1 1h5.256A4.493 4.493 0 0 1 8 12.5a4.49 4.49 0 0 1 1.544-3.393C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4Z"/>
+						</svg>
+						<div class="card-body text-center">
+							<p class="card-text">Set Up Account</p>
+							<?php echo "<a href='/Dashboard/setup_account' class='stretched-link'></a>" ?>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 		
+		<script src="/resources/scripts/scripts.js"></script>
+
+		<!-- Bootstrap JS -->
     	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 	</body>
 

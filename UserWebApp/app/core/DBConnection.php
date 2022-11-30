@@ -8,7 +8,7 @@ class DBConnection {
 	private function __construct() {
 		if(self::$connection == null) {
 			$host = 'localhost';
-			$DBname = 'as2';
+			$DBname = 'vip_valet_db';
 			$user = 'root';
 			$password = '';
 			self::$connection = new \PDO("mysql:host=$host;dbname=$DBname", $user, $password);
