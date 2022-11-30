@@ -12,38 +12,36 @@
    </head>
 
    <body>
-      <div class="container-lg">
-         <div class="row">
-            <div class="col-md">
-               <img src="/resources/images/logo.png" width="30%" alt="VIP Valet Logo">
+      <div class="container-xl text-center">
+         <div class="row my-4 d-inline-flex text-start">
+            <div class="col-md" align="center">
+               <img class="mb-4" src="/resources/images/logo.png" width="50%" alt="VIP Valet Logo">
                <h3>Reserve Your Parking</h3> <hr>
             </div>
-         </div>
-
+         
          <form>
-            <div class="row">
-               <div class="col-md-4 mb-5">
-                  <h2 class="text-muted">License plate</h3>
-                  <input type="text" class="form-control" name="license" placeholder="1A1 B2B" required>
-               </div>
-
-               <div class="col-md-4 mb-5">
-                  <h2 class="text-muted">Parking lot</h3>
-                  <select class="form-select" name="location" required>
-                     <option selected disabled>Choose your parking lot</option>
-                     <option value="laval">Laval</option>
-                     <option value="longueil">Longueil</option>
-                  </select>
-               </div>
-
-               <div class="col-md-4 mb-5">
-                  <h2 class="text-muted">Duration</h3>
-                  <input type="number" class="form-control" name="duration" min="1" max="24" placeholder="Select a time" required>
-               </div>
+            <div class="col-md mb-5">
+               <h2 class="text-muted">License plate</h3>
+               <input type="text" class="form-control" name="license" placeholder="1A1 B2B" required>
             </div>
 
-            <button type="submit" name="action" class="btn btn-primary float-end mt-2 mx-4">Confirm</button>
+            <div class="col-md mb-5">
+               <h2 class="text-muted">Parking lot</h3>
+               <select class="form-select" name="location" required>
+                  <option selected disabled>Choose your parking lot</option>
+                  <option value="laval">Laval</option>
+                  <option value="longueil">Longueil</option>
+               </select>
+            </div>
+
+            <div class="col-md mb-5">
+               <h2 class="text-muted">Duration</h3>
+               <input type="number" class="form-control" name="duration" min="1" max="24" placeholder="Select a time" required>
+            </div>
+
+            <button type="submit" name="action" class="btn btn-primary float-end mt-2 mb-4 mx-4">Confirm</button>
          </form>
+      </div>
 
       <script src="/resources/scripts/scripts.js"></script>
 
