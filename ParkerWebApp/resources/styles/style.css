@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+/*@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
 *{
   margin: 0;
   padding: 0;
@@ -232,4 +232,76 @@ form .page .btns button:hover {
 .progress-bar .step .check.active {
   display: block;
   color: #fff;
+  */
+
+*{
+  margin: 0;
+  padding: 0;
+  outline: none;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  overflow: hidden;
+  background-image: url("/resources/images/bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+form{
+  width: 330px;
+  background: #fff;
+  text-align: center;
+  border-radius: 5px;
+  padding: 50px 35px 10px 35px;
+  background: -webkit-linear-gradient(bottom, #969696, #FFFFFF);
+}
+
+.tab p{
+  font-size: 20px;
+  margin: 0 0 10px 0;
+}
+
+input{
+  margin: 10px 0;
+  padding: 10px;
+  box-sizing: border-box;
+  width: 100%;
+  font-size: 17px;
+  border: 1px solid #aaaaaa;
+}
+
+.index-btn-wrapper{
+  display: flex;
+}
+
+.index-btn{
+  margin: 20px 15px 0 0;
+  background: #04AA6D;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 17px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.index-btn:hover{
+  opacity: 0.8;
+}
+
+.step{
+  height: 30px;
+  width: 30px;
+  line-height: 30px;
+  margin: 0 2px;
+  color: white;
+  background: green;
+  border-radius: 50%;
+  display: inline-block;
+  opacity: 0.25;
 }
