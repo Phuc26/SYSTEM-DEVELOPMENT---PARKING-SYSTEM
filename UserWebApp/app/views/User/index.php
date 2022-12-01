@@ -16,40 +16,73 @@
 
 		<div class="container-lg">
 			<h1>User Account</h1><hr>
-			<div class="row justify-content-center">
-				<div class="col-md">
-					<h2> <div class="text-muted mb-3">Account Details</div> </h2>
+			<div class="row">
 
+				<!-- Account Information -->
+				<div class="col-md-6">
+					<h2> <div class="text-muted mb-3">Account Information</div> </h2>
+
+					<!-- Username -->
 					<label for="username" class="form-label">Username</label>
-					<input type="text" class="form-control mb-3" name="username" value="Placeholder" readonly>
+					<div class="input-group mb-3">
+						<input type="text" class="form-control" name="username" value="<?= $data->username ?>" readonly>
+						<button type="button" class="btn btn-outline-secondary">Change</button>
+					</div>
 
+					<!-- Password (HIDDEN) -->
 					<label for="password" class="form-label">Password</label>
-					<input type="password" class="form-control mb-3" name="password" value="Placeholder" readonly>
+					<div class="input-group mb-3">
+						<input type="text" class="form-control text-muted" name="password" value="-- Hidden --" readonly>
+						<button type="button" class="btn btn-outline-secondary">Change</button>
+					</div>
+
+					<!-- Role -->
+					<label for="role" class="form-label">Role</label>
+					<div class="input-group mb-3">
+						<input type="text" class="form-control" name="role" value="<?= $data->role ?>" readonly>
+					</div>
 				</div>
 
-				<div class="col-md">
+				<!-- Personal Information -->
+				<div class="col-md-6">
 					<h2> <div class="text-muted mb-3">Personal Information</div> </h2>
 
+					<!-- First Name -->
 					<label for="firstname" class="form-label">First Name</label>
-					<input type="text" class="form-control mb-3" name="firstname" value="John" readonly>
+					<div class="input-group mb-3">
+						<input type="text" class="form-control" name="firstname" value="<?= $data->first_name ?>" readonly>
+						<button type="button" class="btn btn-outline-secondary">Change</button>
+					</div>
 
+					<!-- Last Name -->
 					<label for="lastname" class="form-label">Last Name</label>
-					<input type="text" class="form-control mb-3" name="lastname" value="Smith" readonly>
+					<div class="input-group mb-3">
+						<input type="text" class="form-control" name="lastname" value="<?= $data->last_name ?>" readonly>
+						<button type="button" class="btn btn-outline-secondary">Change</button>
+					</div>
 
-					<label for="email" class="form-label">Email Adress</label>
-					<input type="email" class="form-control mb-3" name="email" value="mistersmith@example.com" readonly>
+					<!-- Email Address -->
+					<label for="email" class="form-label">Email Address</label>
+					<div class="input-group mb-3">
+						<input type="email" class="form-control" name="email" value="<?= $data->email ?>" readonly>
+						<button type="button" class="btn btn-outline-secondary">Change</button>
+					</div>
 
+					<!-- Phone Number -->
 					<label for="phone" class="form-label">Phone Number</label>
-					<input type="tel" class="form-control" name="lastName" value="054-942-7762" readonly>
+					<div class="input-group">
+						<input type="tel" class="form-control" name="lastName" value="<?= $data->phone_number ?>" readonly>
+						<button type="button" class="btn btn-outline-secondary">Change</button>
+					</div>
 				</div>
 			</div>
 
-			<div class="row justify-content-center">
+			<div class="row">
 				<div class="col-md">
-					<button type="submit" name="action" class="btn btn-primary float-end mt-5 mx-2">Update</button>
-					<button type="submit" name="action" class="btn btn-danger float-end mt-5 pd-4">Back</button>
+					<a href="/Dashboard/index" class="btn btn-secondary float-end mx-3 mt-5">Back</a>
 				</div>
 			</div>
+			TODO: add modals for each update.
 		</div>
 		
 		<script src="/resources/scripts/scripts.js"></script>

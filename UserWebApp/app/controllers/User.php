@@ -3,10 +3,11 @@ namespace app\controllers;
 
 class User extends \app\core\Controller {
 	
+	#[\app\filters\Login]
 	public function index(){
-		/*$user = new app\models\User();
-		$user = $user->get($_SESSION['username']);	*/
-		$this->view('User/index');
+		$user = new \app\models\User();
+		$user = $user->get($_SESSION['username']);
+		$this->view('User/index', $user);
 	}
 
 	function login() {
@@ -21,6 +22,7 @@ class User extends \app\core\Controller {
 					$_SESSION['username'] 	= $user->username;
 					$_SESSION['role'] 		= $user->role;
 					$_SESSION['seeRevenue'] = $user->seeRevenue;
+					header("location: /Dashboard/index");
 				} else {
 					$this->view('User/login', 'Incorrect username/password combination.');
 					echo '<script>alert("Incorrect username/password combination")</script>';
@@ -30,5 +32,11 @@ class User extends \app\core\Controller {
 				echo '<script>alert("Incorrect username/password combination.")</script>';
 			}
 		}
+	}
+
+	#[\app\filters\Login]
+	function logout() {
+		session_destroy();
+		header('location:/Main/index');
 	}
 }

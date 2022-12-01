@@ -1,6 +1,7 @@
 <?php
 namespace app\controllers;
 
+#[\app\filters\Login]
 class Dashboard extends \app\core\Controller {
 	
 	public function index() {	
