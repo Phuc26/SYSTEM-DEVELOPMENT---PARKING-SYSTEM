@@ -11,6 +11,13 @@ class User extends \app\core\Model {
 		return $this->get($this->username) != false;
 	}
 
+	function usedUsername($username) {
+		$SQL = 'SELECT * FROM user WHERE username = :username';
+		$STMT = self::$_connection->prepare($SQL);
+		$STMT->execute(['username'=>$username]);
+		return $STMT->fetch() >= 1;
+	}
+
 	function get($username) {
 		$SQL = 'SELECT * FROM user WHERE username = :username';
 		$STMT = self::$_connection->prepare($SQL);
@@ -23,5 +30,41 @@ class User extends \app\core\Model {
 		$SQL = 'INSERT INTO user(username, password_hash, email, address) VALUES(:username, :password_hash, :email, :address)';
 		$STMT = self::$_connection->prepare($SQL);
 		$STMT->execute(['username'=>$this->username, 'password_hash'=>$this->password_hash, 'email'=>$this->email, 'address'=>$this->address]);
+	}
+
+	function updateUsername() {
+		$SQL = 'UPDATE user SET username = :username WHERE user_id = :user_id';
+		$STMT = self::$_connection->prepare($SQL);
+		$STMT->execute(['username'=>$this->username, 'user_id'=>$this->user_id]);
+	}
+
+	function updatePassword() {
+		$SQL = 'UPDATE user SET password_hash = :password_hash WHERE user_id = :user_id';
+		$STMT = self::$_connection->prepare($SQL);
+		$STMT->execute(['password_hash'=>$this->password_hash, 'user_id'=>$this->user_id]);
+	}
+
+	function updateFirstname() {
+		$SQL = 'UPDATE user SET first_name = :first_name WHERE user_id = :user_id';
+		$STMT = self::$_connection->prepare($SQL);
+		$STMT->execute(['first_name'=>$this->first_name, 'user_id'=>$this->user_id]);
+	}
+
+	function updateLastname() {
+		$SQL = 'UPDATE user SET last_name = :last_name WHERE user_id = :user_id';
+		$STMT = self::$_connection->prepare($SQL);
+		$STMT->execute(['last_name'=>$this->last_name, 'user_id'=>$this->user_id]);
+	}
+
+	function updateEmail() {
+		$SQL = 'UPDATE user SET email = :email WHERE user_id = :user_id';
+		$STMT = self::$_connection->prepare($SQL);
+		$STMT->execute(['email'=>$this->email, 'user_id'=>$this->user_id]);
+	}
+
+	function updatePhone() {
+		$SQL = 'UPDATE user SET phone_number = :phone_number WHERE user_id = :user_id';
+		$STMT = self::$_connection->prepare($SQL);
+		$STMT->execute(['phone_number'=>$this->phone_number, 'user_id'=>$this->user_id]);
 	}
 }
