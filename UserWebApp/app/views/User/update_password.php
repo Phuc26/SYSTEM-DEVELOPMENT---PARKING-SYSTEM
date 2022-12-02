@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, inital-scale=1, shrink-to-fit=no">
-		<title>Login</title>
+		<title>Change Password</title>
 		<link rel="stylesheet" type="text/css" href="/resources/styles/styles.css">
 
 		<!-- Bootstrap CSS -->
@@ -15,25 +15,21 @@
 		<?php $this->view('shared/navbar'); ?>
 
 		<div class="container-lg">
-
-			<!-- Login Form -->
-			<div class="row justify-content-center">
+			<div class="row justify-content-center pb-3">
 				<div class="col-lg-4">
-					<h1>Login</h1><hr>
+					<h1 class="mt-3">Change Password</h1><hr>
 					<form method="post" action="">
-						<label for="username" class="form-label">Username</label>
-		                <input type="text" class="form-control mb-2" name="username">
+						<label for="password" class="form-label">Current Password</label>
+		                <input type="password" class="form-control mb-2" name="password" required>
 
-		                <label for="password" class="form-label">Password</label>
-		                <input type="password" class="form-control mb-3" name="password">
+		                <label for="newPassword" class="form-label">New Password</label>
+		                <input type="password" class="form-control mb-2" name="newPassword" required>
 
-		               	<div class="mb-3"> 
-							<input type="checkbox" class="form-check-input" id="remember-me">
-		                  	<label for="remember-me">Remember me</label>
-		                  	<a href="#" class="forgot">Forgot Password?</a>
-		               	</div>
+		                <label for="confirmPassword" class="form-label">Confirm Password</label>
+		                <input type="password" class="form-control mb-3" name="confirmPassword" required>
 
-	               		<button type="submit" name="action" class="btn btn-primary">Login</button>
+	               		<button type="submit" name="action" class="btn btn-primary float-end">Confirm Changes</button>
+	               		<a href="/User/index" class="btn btn-danger float-end me-2">Cancel</a>         		
 					</form>
 				</div>
 			</div>

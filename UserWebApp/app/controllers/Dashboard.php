@@ -42,10 +42,10 @@ class Dashboard extends \app\core\Controller {
 			 	$user->insert();
 			 	header('location:/Dashboard/index');
 			} elseif ($user->exists()) {
-				$this->view('Dashboard/setup_account', 'Username is taken');
+				$this->view('Dashboard/setup_account');
 				echo '<script>alert("A user is already using that username.")</script>';
 			} else {
-				$this->view('Dashboard/setup_account', 'Passwords do not match');
+				$this->view('Dashboard/setup_account');
 				echo '<script>alert("Passwords do not match.")</script>';
 			}
 		}

@@ -16,24 +16,27 @@
 
 		<div class="container-lg">
 			<h1>User Account</h1><hr>
+
+			<?php echo $data->username . " " . $data->first_name ?>
+
 			<div class="row">
 
 				<!-- Account Information -->
-				<div class="col-md-6">
+				<div class="col-md-6 pe-4">
 					<h2> <div class="text-muted mb-3">Account Information</div> </h2>
 
 					<!-- Username -->
 					<label for="username" class="form-label">Username</label>
 					<div class="input-group mb-3">
 						<input type="text" class="form-control" name="username" value="<?= $data->username ?>" readonly>
-						<button type="button" class="btn btn-outline-secondary">Change</button>
+						<a href="/User/update_username" class="btn btn-outline-secondary">Change</a>
 					</div>
 
 					<!-- Password (HIDDEN) -->
 					<label for="password" class="form-label">Password</label>
 					<div class="input-group mb-3">
 						<input type="text" class="form-control text-muted" name="password" value="-- Hidden --" readonly>
-						<button type="button" class="btn btn-outline-secondary">Change</button>
+						<a href="/User/update_password" class="btn btn-outline-secondary">Change</a>
 					</div>
 
 					<!-- Role -->
@@ -44,45 +47,44 @@
 				</div>
 
 				<!-- Personal Information -->
-				<div class="col-md-6">
+				<div class="col-md-6 pe-4">
 					<h2> <div class="text-muted mb-3">Personal Information</div> </h2>
 
 					<!-- First Name -->
 					<label for="firstname" class="form-label">First Name</label>
 					<div class="input-group mb-3">
 						<input type="text" class="form-control" name="firstname" value="<?= $data->first_name ?>" readonly>
-						<button type="button" class="btn btn-outline-secondary">Change</button>
+						<a href="/User/update_firstname" class="btn btn-outline-secondary">Change</a>
 					</div>
 
 					<!-- Last Name -->
 					<label for="lastname" class="form-label">Last Name</label>
 					<div class="input-group mb-3">
 						<input type="text" class="form-control" name="lastname" value="<?= $data->last_name ?>" readonly>
-						<button type="button" class="btn btn-outline-secondary">Change</button>
+						<a href="/User/update_lastname" class="btn btn-outline-secondary">Change</a>
 					</div>
 
 					<!-- Email Address -->
 					<label for="email" class="form-label">Email Address</label>
 					<div class="input-group mb-3">
 						<input type="email" class="form-control" name="email" value="<?= $data->email ?>" readonly>
-						<button type="button" class="btn btn-outline-secondary">Change</button>
+						<a href="/User/update_email" class="btn btn-outline-secondary">Change</a>
 					</div>
 
 					<!-- Phone Number -->
 					<label for="phone" class="form-label">Phone Number</label>
 					<div class="input-group">
 						<input type="tel" class="form-control" name="lastName" value="<?= $data->phone_number ?>" readonly>
-						<button type="button" class="btn btn-outline-secondary">Change</button>
+						<a href="/User/update_phone" class="btn btn-outline-secondary">Change</a>
 					</div>
 				</div>
 			</div>
 
-			<div class="row">
-				<div class="col-md">
-					<a href="/Dashboard/index" class="btn btn-secondary float-end mx-3 mt-5">Back</a>
+			<div class="row pb-3">
+				<div class="col-md pe-4 pb-2">
+					<a href="/Dashboard/index" class="btn btn-secondary float-end mt-5">Back</a>
 				</div>
 			</div>
-			TODO: add modals for each update.
 		</div>
 		
 		<script src="/resources/scripts/scripts.js"></script>
