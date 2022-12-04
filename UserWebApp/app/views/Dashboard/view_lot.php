@@ -16,19 +16,19 @@
 
 		<div class="container-lg">
 			<h1>View a Parking Lot's Information</h1><hr>
-			<div class="row ">
-				<div class="col-md-4">
+			<div class="row">
+				<div class="col-md-4 pb-4">
 					SHOW LIST OF PARKING LOTS
 				</div>
 
-				<div class="col-md-8">
+				<div class="col-md-8 pb-4">
 					WHEN PARKING LOT IS CLICKED, SHOW INFO ABOUT PARKING LOT
 				</div>
 			</div>
 
-			<div class="row justify-content-center">
-				<div class="col-md">
-					<?php echo "<a href='/Dashboard/index' class='btn btn-secondary float-end mx-3 mt-5'>Back</a>" ?>
+			<div class="row pb-4">
+				<div class="col-md pe-4 pb-2">
+					<?php echo "<a href='/Dashboard/index' class='btn btn-secondary float-end mt-5'>Back</a>" ?>
 				</div>
 			</div>
 		</div>

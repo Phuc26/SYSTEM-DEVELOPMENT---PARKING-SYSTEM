@@ -18,7 +18,7 @@
 			<h1>Set Up an Account</h1><hr>
 
 			<form method="post" action="">
-				<div class="row pe-3"> 
+				<div class="row"> 
 					<div class="col-md-6">
 						<h2 class="text-muted mb-3">Account Details</h2>
 
@@ -51,7 +51,7 @@
 					</div>
 
 					<div class="col-md-6">
-						<h2> <div class="text-muted mb-3">Account Details</div> </h2>
+						<h2> <div class="text-muted mb-3">Personal Information</div> </h2>
 						
 						<label for="firstname" class="form-label">First Name*</label>
 	                  	<input type="text" class="form-control  mb-2" name="firstname" value="<?php echo isset($_POST["firstname"]) ? $_POST["firstname"] : ''; ?>" required>
@@ -67,10 +67,10 @@
 					</div>
 				</div>
 
-				<div class="row pe-3">
+				<div class="row pb-4">
 					<div class="col-sm-6"> <small>All fields with an asterisk* must be filled out.</small> </div>
 					<div class="col-sm-6">
-						<button type="submit" name="action" class="btn btn-primary float-end mt-5 mx-2">Confirm</button>
+						<button type="submit" name="action" class="btn btn-primary float-end mt-5">Confirm</button>
 						<?php echo "<a href='/Dashboard/index' class='btn btn-danger float-end mt-5 pd-4'>Cancel</a>" ?>
 					</div>
 				</div>
