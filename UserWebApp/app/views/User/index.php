@@ -17,8 +17,6 @@
 		<div class="container-lg">
 			<h1>User Account</h1><hr>
 
-			<?php echo $data->username . " " . $data->first_name ?>
-
 			<div class="row">
 
 				<!-- Account Information -->

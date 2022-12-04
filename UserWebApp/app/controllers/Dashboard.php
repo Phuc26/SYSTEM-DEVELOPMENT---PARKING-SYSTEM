@@ -9,7 +9,32 @@ class Dashboard extends \app\core\Controller {
 	}
 
 	function setup_lot() {	
-		$this->view('Dashboard/setup_lot');
+		if (!isset($_POST['action'])) {
+			$this->view('Dashboard/setup_lot');
+		} else {
+			$lot = new \app\models\Lot();
+			$lot->user_id 		= $_POST['owner'];
+			$lot->lot_name 		= $_POST['lotName'];
+			$lot->address 		= $_POST['address'];
+			$lot->city 			= $_POST['city'];
+			$lot->province 		= $_POST['province'];
+			$lot->postal_code 	= $_POST['postalcode'];
+			$lot->disabled 		= 0;
+			$lot->start_date 	= $_POST['startDate'];
+			$lot->end_date 		= null;
+
+			if (!$lot->exists() && $_POST['password'] == $_POST['passwordconfirm']) {
+			 	$user->password_hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
+			 	$user->insert();
+			 	header('location:/Dashboard/index');
+			} elseif ($user->exists()) {
+				$this->view('Dashboard/setup_account');
+				echo '<script>alert("A user is already using that username.")</script>';
+			} else {
+				$this->view('Dashboard/setup_account');
+				echo '<script>alert("Passwords do not match.")</script>';
+			}
+		}
 	}
 
 	function view_lot() {	
