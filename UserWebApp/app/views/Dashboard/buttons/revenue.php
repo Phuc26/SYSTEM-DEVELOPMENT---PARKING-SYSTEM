@@ -8,7 +8,7 @@
 		</svg>
 		<div class="card-body text-center">
 			<p class="card-text">View Revenue</p>
-			<?php echo "<a href='/Dashboard/#' class='stretched-link'></a>" ?>
+			<?php echo "<a href='/Dashboard/view_revenue' class='stretched-link'></a>" ?>
 		</div>
 	</div>
 </div>

@@ -8,8 +8,6 @@ class Dashboard extends \app\core\Controller {
 		$this->view('Dashboard/index');
 	}
 
-	#[\app\filters\NoOwner]
-	#[\app\filters\NoManager]
 	function setup_lot() {
 		$user = new \app\models\User();
 		$owners = $user->getOwners();
@@ -44,16 +42,28 @@ class Dashboard extends \app\core\Controller {
 		$this->view('Dashboard/view_lot', $lots);
 	}
 
-	#[\app\filters\NoOwner]
-	#[\app\filters\NoManager]
 	function update_lot() {	
 		$lots = new \app\models\Lot();
 		$lots = $lots->getAll();
 		$this->view('Dashboard/update_lot', $lots);
 	}
 
-	#[\app\filters\NoOwner]
-	#[\app\filters\NoManager]
+	function view_daily_revenue() {
+		$dailyRevenue = new \app\models\Revenue();
+		$dailyRevenue = $dailyRevenue->getDailyRevenue();
+		$monthlyRevenue = new \app\models\Revenue();
+		$monthlyRevenue = $monthlyRevenue->getDailyRevenue();
+		$this->view('Dashboard/view_revenue');
+	}
+
+	function view_monthly_revenue() {
+		$revenue = new \app\models\Revenue();
+		$dailyRevenue = $dailyRevenue->getDailyRevenue();
+		$monthlyRevenue = new \app\models\Revenue();
+		$monthlyRevenue = $monthlyRevenue->getDailyRevenue();
+		$this->view('Dashboard/view_revenue');
+	}
+
 	function confirm_update($lot_id) {
 		$user = new \app\models\User();
 		$user = $user->get($_SESSION['username']);
@@ -80,16 +90,12 @@ class Dashboard extends \app\core\Controller {
 		}
 	}
 
-	#[\app\filters\NoOwner]
-	#[\app\filters\NoManager]
 	function disable_lot() {
 		$lots = new \app\models\Lot();
 		$lots = $lots->getAll();
 		$this->view('Dashboard/disable_lot', $lots);
 	}
 
-	#[\app\filters\NoOwner]
-	#[\app\filters\NoManager]
 	function confirm_disable($lot_id) {
 		$user = new \app\models\User();
 		$user = $user->get($_SESSION['username']);
@@ -113,8 +119,6 @@ class Dashboard extends \app\core\Controller {
 		}
 	}
 
-	#[\app\filters\NoOwner]
-	#[\app\filters\NoManager]
 	function setup_account() {	
 		if (!isset($_POST['action'])) {
 			$this->view('Dashboard/setup_account');
@@ -148,16 +152,12 @@ class Dashboard extends \app\core\Controller {
 		$this->view('Dashboard/view_lot', $result);
   	}
 
-  	#[\app\filters\NoOwner]
-	#[\app\filters\NoManager]
   	function searchUpdate() {
 		$lots = new \app\models\Lot();
 		$result = $lots->searchLots($_POST['search']);
 		$this->view('Dashboard/update_lot', $result);
   	}
 
-  	#[\app\filters\NoOwner]
-	#[\app\filters\NoManager]
   	function searchDisable() {
 		$lots = new \app\models\Lot();
 		$result = $lots->searchLots($_POST['search']);

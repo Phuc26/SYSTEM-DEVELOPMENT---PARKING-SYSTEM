@@ -22,31 +22,29 @@
 			<div class="row justify-content-center">
 
 				<!-- ADMIN / TECHNICAN: Set up lot -->
-				<?php if ($_SESSION['role'] == 'admin' || $_SESSION['role'] == 'technician') { $this->view('Dashboard/buttons/setup'); } ?>
+				<?php $this->view('Dashboard/buttons/setup'); ?>
 
-				<!-- ALL: View lot -->
+				<!-- ADMIN / TECHNICAN: View lot -->
 				<?php $this->view('Dashboard/buttons/view'); ?>
 
 				<!-- ADMIN / TECHNICAN: Update lot -->
-				<?php if ($_SESSION['role'] == 'admin' || $_SESSION['role'] == 'technician') { $this->view('Dashboard/buttons/update'); } ?>
+				<?php $this->view('Dashboard/buttons/update'); ?>
 
 				<!-- ADMIN / TECHNICAN: Disable lot -->
-				<?php if ($_SESSION['role'] == 'admin' || $_SESSION['role'] == 'technician') { $this->view('Dashboard/buttons/disable'); } ?>
+				<?php $this->view('Dashboard/buttons/disable'); ?>
 			</div>
 
 			<!-- Second row -->
 			<div class="row justify-content-center pb-4"> 
 
 				<!-- ADMIN / TECHNICAN / MANAGER: Change rates -->
-				<?php if ($_SESSION['role'] == 'admin' || $_SESSION['role'] == 'technician' ||  $_SESSION['role'] == 'manager') { 
-					$this->view('Dashboard/buttons/rates'); 
-				} ?>
+				<?php $this->view('Dashboard/buttons/rates'); ?>
 
-				<!-- IF seeRevenue == 0: View revenue -->
-				<?php if ($_SESSION['seeRevenue'] == 1) { $this->view('Dashboard/buttons/revenue'); } ?>
+				<!-- IF seeRevenue == 1: View revenue -->
+				<?php $this->view('Dashboard/buttons/revenue'); ?>
 
 				<!-- ADMIN / TECHNICAN: Set up account -->
-				<?php if ($_SESSION['role'] == 'admin' || $_SESSION['role'] == 'technician') { $this->view('Dashboard/buttons/account'); }	 ?>
+				<?php $this->view('Dashboard/buttons/account'); ?>
 			</div>
 		</div>
 		
