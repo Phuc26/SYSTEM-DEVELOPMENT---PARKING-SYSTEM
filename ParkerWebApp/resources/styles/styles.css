@@ -11,4 +11,5 @@ body {
   padding: 16px;
   border-radius: 12px;
   background-image: linear-gradient(#ffffff, #dbdbdb);
+  opacity: 90%;
 }
