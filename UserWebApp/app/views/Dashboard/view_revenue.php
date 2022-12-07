@@ -16,15 +16,58 @@
 
 		<div class="container-lg">
 			<h1>View a Parking Lot's Revenue</h1><hr>
-			<div class="row">
-				<div class="col-md-4 pb-4">
-					SHOW LIST OF PARKING LOTS
+			<div class="row align-items-center">
+				<div class="col-md-4 pb-2">
+					<form method="post" action="/Dashboard/searchDisable">
+						<?php $this->view('shared/search') ?>
+					</form>
 				</div>
 
-				<div class="col-md-8 pb-4">
-					WHEN PARKING LOT IS CLICKED, SHOW DAILY/MONTHLY REVENUE
+				<div class="col-md-4 pb-2">
+					<b>Results - <span id="totalLots"><?= count($data) ?></span></b>
 				</div>
 			</div>
+
+			<div class="row">
+				<div class="col-md pe-4 pb-4">
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th width="5%">ID</th>
+								<th width="25%">Parking Lot Name</th>
+								<th width="12%">Date</th>
+								<th width="12%">Daily Revenue ID</th>
+								<th width="12%">Daily Revenue</th>
+								<th width="20%">Monthly Revenue ID</th>
+								<th width="12%">Monthly Revenue</th>
+							</tr>
+						</thead>
+
+						<tbody>
+							<?php 
+							foreach ($data as $lot) {
+								$isDisabled = $lot->disabled == 0 ? 'No' : 'Yes';
+								$endDate = $lot->end_date == null ? 'None' : $lot->end_date;
+
+								echo 
+								"<tr>
+									<td>$lot->lot_id</td>
+									<td>$lot->lot_name</td>
+									<td>$lot->daily_revenue_id</td>
+									<td>$lot->daily_lot_revenue</td>
+									<td>$lot->monthly_rate_id</td>
+									<td>$lot->monthly_revenue</td>
+									<td>$isDisabled</td>
+									<td>$lot->start_date</td>
+									<td>$endDate</td>
+								</tr>";
+							} ?>
+						</tbody>
+					</table>
+				</div>
+			</div>
+
+
 
 			<div class="row pb-4">
 				<div class="col-md pe-4 pb-2">

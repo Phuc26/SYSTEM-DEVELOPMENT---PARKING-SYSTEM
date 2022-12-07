@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 30, 2022 at 03:22 AM
--- Server version: 10.4.25-MariaDB
--- PHP Version: 8.1.10
+-- Generation Time: Dec 07, 2022 at 02:45 PM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 8.1.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -115,9 +115,18 @@ CREATE TABLE `user` (
   `last_name` varchar(50) NOT NULL,
   `email` varchar(80) NOT NULL,
   `phone_number` varchar(20) NOT NULL,
-  `role` enum('admin','technican','manager','lot_owner') NOT NULL,
+  `role` enum('admin','technician','manager','owner') NOT NULL,
   `seeRevenue` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`user_id`, `username`, `password_hash`, `first_name`, `last_name`, `email`, `phone_number`, `role`, `seeRevenue`) VALUES
+(1, 'admin', '$2y$10$BbFwuBn9.XdNa/v/nBezk.vMgOkEfLsUAwSmg7BgbTNaOGhsR44mG', 'Walter', 'Hartwell White', 'dr.heisenberg@gmail.com', '051-442-1752', 'admin', 1),
+(2, 'technician', '$2y$10$BnAdv3PBonxG6SVnFRHJeepqbqyke33Z5mNsPOy9ol8.oxZQkXixW', 'Jesse', 'Pinkman', 'yojesse.pman@hotmail.com', '942-155-7231', 'owner', 1),
+(3, 'owner', '$2y$10$fhTRGdME2a9/MimyEkI/4.BzBNxvF7ZvqoROkyNjokGLubLf4TOja', 'Gus', 'Fring', 'mistergus@gmail.com', '541-228-9562', 'technician', 1);
 
 --
 -- Indexes for dumped tables
@@ -202,7 +211,7 @@ ALTER TABLE `transactions`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables

@@ -48,6 +48,22 @@ class Dashboard extends \app\core\Controller {
 		$this->view('Dashboard/update_lot', $lots);
 	}
 
+	function view_daily_revenue() {
+		$dailyRevenue = new \app\models\Revenue();
+		$dailyRevenue = $dailyRevenue->getDailyRevenue();
+		$monthlyRevenue = new \app\models\Revenue();
+		$monthlyRevenue = $monthlyRevenue->getDailyRevenue();
+		$this->view('Dashboard/view_revenue');
+	}
+
+	function view_monthly_revenue() {
+		$revenue = new \app\models\Revenue();
+		$dailyRevenue = $dailyRevenue->getDailyRevenue();
+		$monthlyRevenue = new \app\models\Revenue();
+		$monthlyRevenue = $monthlyRevenue->getDailyRevenue();
+		$this->view('Dashboard/view_revenue');
+	}
+
 	function confirm_update($lot_id) {
 		$user = new \app\models\User();
 		$user = $user->get($_SESSION['username']);
