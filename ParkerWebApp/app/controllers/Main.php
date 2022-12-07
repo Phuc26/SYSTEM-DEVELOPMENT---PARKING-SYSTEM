@@ -6,4 +6,8 @@ class Main extends \app\core\Controller {
 	public function index(){	
 		$this->view('Main/index');
 	}
+
+	public function confirmation(){	
+		$this->view('Main/confirmation');
+	}
 }
