@@ -16,13 +16,57 @@
 
 		<div class="container-lg">
 			<h1>View a Parking Lot's Information</h1><hr>
-			<div class="row">
-				<div class="col-md-4 pb-4">
-					SHOW LIST OF PARKING LOTS
+			
+			<div class="row align-items-center">
+				<div class="col-md-4 pb-2">
+					<form method="post" action="/Dashboard/searchView">
+						<?php $this->view('shared/search') ?>
+					</form>
 				</div>
 
-				<div class="col-md-8 pb-4">
-					WHEN PARKING LOT IS CLICKED, SHOW INFO ABOUT PARKING LOT
+				<div class="col-md-4 pb-2">
+					<b>Results - <span id="totalLots"><?= count($data) ?></span></b>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md pe-4 pb-4">
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th width="5%">ID</th>
+								<th width="25%">Parking Lot Name</th>
+								<th width="12%">Address</th>
+								<th width="12%">City</th>
+								<th width="12%">Province</th>
+								<th width="10%">Postal Code</th>
+								<th width="8%">Disabled?</th>
+								<th width="8%">Start Date</th>
+								<th width="8%">End Date</th>
+							</tr>
+						</thead>
+
+						<tbody>
+							<?php 
+							foreach ($data as $lot) {
+								$isDisabled = $lot->disabled == 0 ? 'No' : 'Yes';
+								$endDate = $lot->end_date == null ? 'None' : $lot->end_date;
+
+								echo 
+								"<tr>
+									<td>$lot->lot_id</td>
+									<td>$lot->lot_name</td>
+									<td>$lot->address</td>
+									<td>$lot->city</td>
+									<td>$lot->province</td>
+									<td>$lot->postal_code</td>
+									<td>$isDisabled</td>
+									<td>$lot->start_date</td>
+									<td>$endDate</td>
+								</tr>";
+							} ?>
+						</tbody>
+					</table>
 				</div>
 			</div>
 

@@ -26,10 +26,31 @@ class User extends \app\core\Model {
 		return $STMT->fetch();
 	}
 
-	function insert() {
-		$SQL = 'INSERT INTO user(username, password_hash, email, address) VALUES(:username, :password_hash, :email, :address)';
+	function getOwners() {
+		$SQL = 'SELECT * FROM user WHERE role = "owner"';
 		$STMT = self::$_connection->prepare($SQL);
-		$STMT->execute(['username'=>$this->username, 'password_hash'=>$this->password_hash, 'email'=>$this->email, 'address'=>$this->address]);
+		$STMT->execute();
+		$STMT->setFetchMode(\PDO::FETCH_CLASS, "app\models\User");
+		return $STMT->fetchAll();
+	}
+
+	function insert() {
+		$SQL = 
+			'INSERT INTO user(
+				username, password_hash, first_name, last_name, email, phone_number, role, seeRevenue) 
+			VALUES(
+				:username, :password_hash, :first_name, :last_name, :email, :phone_number, :role, :seeRevenue)';
+		$STMT = self::$_connection->prepare($SQL);
+		$STMT->execute([
+			'username'		=>$this->username, 
+			'password_hash'	=>$this->password_hash,
+			'first_name'	=>$this->first_name,
+			'last_name'		=>$this->last_name,
+			'email'			=>$this->email,
+			'phone_number'	=>$this->phone_number,
+			'role'			=>$this->role,
+			'seeRevenue'	=>$this->seeRevenue
+		]);
 	}
 
 	function updateUsername() {
