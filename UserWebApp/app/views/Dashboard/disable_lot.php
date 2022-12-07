@@ -16,13 +16,42 @@
 
 		<div class="container-lg">
 			<h1>Disable Services of a Parking Lot</h1><hr>
-			<div class="row">
-				<div class="col-md-4 pb-4">
-					SHOW LIST OF PARKING LOTS
+			<div class="row align-items-center">
+				<div class="col-md-4 pb-2">
+					<form method="post" action="/Dashboard/searchDisable">
+						<?php $this->view('shared/search') ?>
+					</form>
 				</div>
 
-				<div class="col-md-8 pb-4">
-					WHEN PARKING LOT IS CLICKED, SHOW BUTTON FOR DISABLING
+				<div class="col-md-4 pb-2">
+					<?php $i = 0; foreach ($data as $lot) { if ($lot->disabled == 0) { $i++; } } ?>
+					<b>Results - <span id="totalLots"><?= $i ?></span></b>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md pe-4 pb-4">
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th width="5%">ID</th>
+								<th width="95%">Parking Lot Name</th>
+							</tr>
+						</thead>
+
+						<tbody>
+							<?php 
+							foreach ($data as $lot) {
+								if ($lot->disabled == 0) {
+									echo 
+									"<tr>
+										<td><a href='/Dashboard/confirm_disable/$lot->lot_id'>$lot->lot_id</a></td>
+										<td><a href='/Dashboard/confirm_disable/$lot->lot_id'>$lot->lot_name</a></td>
+									</tr>";
+								}
+							} ?>
+						</tbody>
+					</table>
 				</div>
 			</div>
 

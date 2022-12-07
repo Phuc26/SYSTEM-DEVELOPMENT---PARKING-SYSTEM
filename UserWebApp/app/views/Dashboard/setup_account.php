@@ -57,7 +57,7 @@
 	                  	<input type="text" class="form-control  mb-2" name="firstname" value="<?php echo isset($_POST["firstname"]) ? $_POST["firstname"] : ''; ?>" required>
 
 	                  	<label for="lastname" class="form-label">Last Name*</label>
-						<input type="password" class="form-control mb-2" name="lastname" value="<?php echo isset($_POST["lastname"]) ? $_POST["lastname"] : ''; ?>" required>
+						<input type="text" class="form-control mb-2" name="lastname" value="<?php echo isset($_POST["lastname"]) ? $_POST["lastname"] : ''; ?>" required>
 
 	                  	<label for="email" class="form-label">Email Address</label>
 						<input type="email" class="form-control mb-2" name="email" value="<?php echo isset($_POST["email"]) ? $_POST["email"] : ''; ?>">
@@ -70,7 +70,7 @@
 				<div class="row pb-4">
 					<div class="col-sm-6"> <small>All fields with an asterisk* must be filled out.</small> </div>
 					<div class="col-sm-6">
-						<button type="submit" name="action" class="btn btn-primary float-end mt-5">Confirm</button>
+						<button type="submit" name="action" class="btn btn-primary float-end mx-2 mt-5">Confirm</button>
 						<?php echo "<a href='/Dashboard/index' class='btn btn-danger float-end mt-5 pd-4'>Cancel</a>" ?>
 					</div>
 				</div>

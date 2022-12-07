@@ -16,41 +16,52 @@
 
 		<div class="container-lg">
 			<h1>Set Up a Parking Lot</h1><hr>
-			<div class="row">
-				<h2 class="text-muted mb-3">Parking Lot Details</h2>
 
-				<div class="col-md-6 pe-4">
-					<label for="lotName" class="form-label">Parking Lot Name*</label>
-	                <input type="text" class="form-control mb-2" name="lotName" value="<?php echo isset($_POST["lotName"]) ? $_POST["lotName"] : ''; ?>" required>
+			<form method="post" action="">
+				<div class="row">
+					<h2 class="text-muted mb-3">Parking Lot Details</h2>
 
-	                <label for="owner" class="form-label">Owner*</label>
-	                <input type="text" class="form-control mb-2" name="owner" value="<?php echo isset($_POST["owner"]) ? $_POST["owner"] : ''; ?>" required>
+					<div class="col-md-6">
+						<label for="lotName" class="form-label">Parking Lot Name*</label>
+		                <input type="text" class="form-control mb-2" name="lotName" value="<?php echo isset($_POST["lotName"]) ? $_POST["lotName"] : ''; ?>" required>
 
-	                <label for="startDate" class="form-label">Parking Lot Name*</label>
-	                <input type="date" class="form-control mb-3" name="startDate" min="<?= date('Y-m-d'); ?>" value="<?php echo isset($_POST["startDate"]) ? $_POST["startDate"] : ''; ?>" required>
+		                <label for="owner" class="form-label">Owner*</label>
+		                <select class="form-select mb-2" name="owner" required>
+		                	<option selected disabled value="">--Choose Owner--</option>
+		                	<?php
+		                		$option = isset($_POST["owner"]) ? $_POST['owner'] : null;
+		                		foreach($data as $owner) {
+		                			echo "<option value='$owner->user_id' $option == $owner->user_id ? 'selected' : ''>$owner->first_name $owner->last_name</option>";
+		                		}
+		                	?>
+		                </select>
+
+		                <label for="startDate" class="form-label">Start Date*</label>
+		                <input type="date" class="form-control mb-3" name="startDate" min="<?= date('Y-m-d'); ?>" value="<?php echo isset($_POST["startDate"]) ? $_POST["startDate"] : ''; ?>" required>
+					</div>
+
+					<div class="col-md-6">
+						<label for="address" class="form-label">Address*</label>
+		                <input type="text" class="form-control mb-2" name="address" value="<?php echo isset($_POST["address"]) ? $_POST["address"] : ''; ?>" required>
+
+		                <label for="city" class="form-label">City*</label>
+		                <input type="text" class="form-control mb-2" name="city" value="<?php echo isset($_POST["city"]) ? $_POST["city"] : ''; ?>" required>
+
+		                <label for="province" class="form-label">Province*</label>
+		                <input type="text" class="form-control mb-2" name="province" value="<?php echo isset($_POST["province"]) ? $_POST["province"] : ''; ?>" required>
+
+		                <label for="postalCode" class="form-label">Postal Code*</label>
+		                <input type="text" class="form-control mb-3" name="postalCode" value="<?php echo isset($_POST["postalCode"]) ? $_POST["postalCode"] : ''; ?>" required>
+					</div>
+
+					<div class="row pb-4">
+						<div class="col-md">
+							<button type="submit" name="action" class="btn btn-primary float-end mx-2 mt-5">Confirm</button>
+							<?php echo "<a href='/Dashboard/index' class='btn btn-danger float-end mt-5'>Cancel</a>" ?>
+						</div>
+					</div>
 				</div>
-
-				<div class="col-md-6 pe-4">
-					<label for="address" class="form-label">Address*</label>
-	                <input type="text" class="form-control mb-2" name="address" value="<?php echo isset($_POST["address"]) ? $_POST["address"] : ''; ?>" required>
-
-	                <label for="city" class="form-label">City*</label>
-	                <input type="text" class="form-control mb-2" name="city" value="<?php echo isset($_POST["city"]) ? $_POST["city"] : ''; ?>" required>
-
-	                <label for="province" class="form-label">Province*</label>
-	                <input type="text" class="form-control mb-2" name="province" value="<?php echo isset($_POST["province"]) ? $_POST["province"] : ''; ?>" required>
-
-	                <label for="postalcode" class="form-label">Postal Code*</label>
-	                <input type="text" class="form-control mb-3" name="postalcode" value="<?php echo isset($_POST["postalcode"]) ? $_POST["postalcode"] : ''; ?>" required>
-				</div>
-			</div>
-
-			<div class="row pb-4">
-				<div class="col-md pe-4 pb-2">
-					<a type="submit" name="action" class="btn btn-primary float-end mx-2 mt-5">Confirm</a>
-					<?php echo "<a href='/Dashboard/index' class='btn btn-danger float-end mt-5'>Cancel</a>" ?>
-				</div>
-			</div>
+			</form>
 		</div>
 
 		<script src="/resources/scripts/scripts.js"></script>
