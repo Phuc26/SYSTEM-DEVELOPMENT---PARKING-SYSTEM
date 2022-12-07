@@ -49,6 +49,10 @@ class Dashboard extends \app\core\Controller {
 		$this->view('Dashboard/disable_lot');
 	}
 
+	function view_revenue() {	
+		$this->view('Dashboard/view_revenue');
+	}
+
 	function setup_account() {	
 		if (!isset($_POST['action'])) {
 			$this->view('Dashboard/setup_account');
