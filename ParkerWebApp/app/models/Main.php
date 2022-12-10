@@ -7,6 +7,10 @@ class Main extends \app\core\Model {
 		parent::__construct();
 	}
 
+	function confirm() {
+		
+	}
+
 	function insert(){
 		$SQL = 'INSERT INTO transaction() VALUES(:)';
 		$STMT = self::$_connection->prepare($SQL);

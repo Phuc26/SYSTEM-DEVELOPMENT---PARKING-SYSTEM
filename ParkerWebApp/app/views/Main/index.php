@@ -3,7 +3,7 @@
    <head>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, inital-scale=1, shrink-to-fit=no">
-      <title>Welcome</title>
+      <title>Reserve your Parking</title>
       <link rel="stylesheet" type="text/css" href="/resources/styles/styles.css">
 
       <!-- Bootstrap CSS -->
@@ -18,41 +18,40 @@
                <h3>Reserve Your Parking</h3> <hr>
             </div>
          
-         <form><input hidden id="totalPrice" name="totalPrice" value= "0">
-            <div class="col-md mb-5">
-               <h2 class="text-muted">License plate</h3>
-               <input type="text" class="form-control" name="license" placeholder="1A1 B2B" required>
+         <form method="post" action="">
+            <input hidden id="totalPrice" name="totalPrice" value="0">
+
+            <div class="col-md px-2 mb-5">
+               <h2 class="text-muted">License plate</h2>
+               <input type="text" class="form-control" name="license" placeholder="1A1 B2B" pattern="[A-Za-z0-9]" minlength="2" maxlength="8" required>
             </div>
 
-            <div class="col-md mb-5">
-               <h2 class="text-muted">Parking lot</h3>
+            <div class="col-md px-2 mb-5">
+               <h2 class="text-muted">Parking lot</h2>
                <select class="form-select" name="location" id="location" required>
-                  <option selected disabled>Choose your parking lot</option>
+                  <option value="" selected disabled >Choose your parking lot</option>
                   <option value="1.15">Laval</option>
                   <option value="1.5">Longueil</option>     
                </select>
             </div>
 
-            <div class="col-md mb-5">
-               <h2 class="text-muted">Duration</h3>
+            <div class="col-md px-2 mb-5">
+               <h2 class="text-muted">Duration</h2>
                <input type="number" class="form-control" name="duration" min="1" max="24" id="duration" placeholder="Select a time" required>
-
             </div>
 
             <div class="d-flex justify-content-center">
                <span class="fs-3 text-muted">Total: $</span>
-               <strong>
-                  <span id="displayTotal" class="fs-3">
+               <strong><span id="displayTotal" class="fs-3">0.00</span></strong>
+            </div>
 
-               0.00 
-
-               
-            </span>
-               </strong>
-          </div>
-
-            <a href="/Main/confirmation" type="submit" name="action" class="btn btn-primary float-end mt-2 mb-4 mx-4" >Confirm</a>
+            <button type="submit" name="action" class="btn btn-primary float-end mt-2 mb-4 mx-4">Confirm</button>
          </form>
-         
+      </div>
+
+      <script src="/resources/scripts/scripts.js"></script>
+
+      <!-- Bootstrap JS -->
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
    </body>
 </html>
