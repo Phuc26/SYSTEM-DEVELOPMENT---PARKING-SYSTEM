@@ -55,6 +55,7 @@
 					</div>
 
 					<div class="row pb-4">
+						<div class="col-sm"> <small>All fields with an asterisk* must be filled out.</small> </div>
 						<div class="col-md">
 							<button type="submit" name="action" class="btn btn-primary float-end mx-2 mt-5">Confirm</button>
 							<?php echo "<a href='/Dashboard/index' class='btn btn-danger float-end mt-5'>Cancel</a>" ?>
