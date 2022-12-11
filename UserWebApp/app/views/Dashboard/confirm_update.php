@@ -20,19 +20,19 @@
 				<div class="row">
 					<div class="col-md-6">
 						<label for="lotName" class="form-label">Parking Lot Name</label>
-		                <input type="text" class="form-control mb-2" name="lotName" value="<?php echo $data->lot_name?>" required>
+		                <input type="text" class="form-control mb-2" name="lotName" value="<?php echo $data->lot_name ?>" required>
 
 		                <label for="address" class="form-label">Address</label>
-		                <input type="text" class="form-control mb-2" name="address" value="<?php echo $data->address?>" required>
+		                <input type="text" class="form-control mb-2" name="address" value="<?php echo $data->address ?>" required>
 
 		                <label for="city" class="form-label">City</label>
-		                <input type="text" class="form-control mb-2" name="city" value="<?php echo $data->city?>" required>
+		                <input type="text" class="form-control mb-2" name="city" value="<?php echo $data->city ?>" required>
 
 		                <label for="province" class="form-label">Province</label>
-		                <input type="text" class="form-control mb-2" name="province" value="<?php echo $data->province?>" required>
+		                <input type="text" class="form-control mb-2" name="province" value="<?php echo $data->province ?>" required>
 
 		                <label for="postalCode" class="form-label">Postal Code</label>
-		                <input type="text" class="form-control mb-2" name="postalCode" value="<?php echo $data->postal_code?>" required>
+		                <input type="text" class="form-control mb-2" name="postalCode" value="<?php echo $data->postal_code ?>" required>
 					</div>
 					
 					<div class="col-md-6">
@@ -44,7 +44,7 @@
 				<div class="row pb-4">
 					<div class="col-sm">
 						<button type="submit" name="action" class="btn btn-primary float-end mx-2 mt-5">Confirm</button>
-						<?php echo "<a href='/Dashboard/disable_lot' class='btn btn-danger float-end mt-5 pd-4'>Cancel</a>" ?>
+						<?php echo "<a href='/Dashboard/update_lot' class='btn btn-danger float-end mt-5 pd-4'>Cancel</a>" ?>
 					</div>
 				</div>
 			</form>

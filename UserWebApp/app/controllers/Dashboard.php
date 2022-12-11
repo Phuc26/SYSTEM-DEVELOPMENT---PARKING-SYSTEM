@@ -38,8 +38,14 @@ class Dashboard extends \app\core\Controller {
 
 	function view_lot() {
 		$lots = new \app\models\Lot();
-		$lots = $lots->getAll();
-		$this->view('Dashboard/view_lot', $lots);
+
+		if ($_SESSION['role'] == 'owner') {
+			$lots = $lots->getFromOwner($_SESSION['user_id']);
+			$this->view('Dashboard/view_lot', $lots);
+		} else {
+			$lots = $lots->getAll();
+			$this->view('Dashboard/view_lot', $lots);
+		}
 	}
 
 	function update_lot() {	

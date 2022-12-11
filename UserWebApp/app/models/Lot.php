@@ -19,6 +19,14 @@ class Lot extends \app\core\Model {
 		return $STMT->fetchAll();
 	}
 
+	function getFromOwner($user_id) {
+		$SQL = 'SELECT * FROM lot WHERE user_id = :user_id';
+		$STMT = self::$_connection->prepare($SQL);
+		$STMT->execute(['user_id'=>$user_id]);
+		$STMT->setFetchMode(\PDO::FETCH_CLASS, "app\models\Lot");
+		return $STMT->fetchAll();
+	}
+
 	function get($lot_id) {
 		$SQL = 'SELECT * FROM lot WHERE lot_id = :lot_id';
 		$STMT = self::$_connection->prepare($SQL);

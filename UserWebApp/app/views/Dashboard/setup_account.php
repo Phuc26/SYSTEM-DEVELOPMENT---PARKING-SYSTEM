@@ -35,8 +35,10 @@
 						<select class="form-select mb-2" name="role" required>
 							<option selected disabled value="">--Choose Role--</option>
 							<?php $option = isset($_POST["role"]) ? $_POST['role'] : null ?>
-							<option value="admin" <?= $option == "admin" ? "selected" : "" ?> >Administrator</option>
-							<option value="technician" <?= $option == "technician" ? "selected" : "" ?> >Technician</option>
+							<?php if ($_SESSION['role'] == 'admin') { ?>
+								<option value="admin" <?= $option == "admin" ? "selected" : "" ?> >Administrator</option>
+								<option value="technician" <?= $option == "technician" ? "selected" : "" ?> >Technician</option>
+							<?php } ?>
 							<option value="manager" <?= $option == "manager" ? "selected" : "" ?>>Lot Manager</option>
 							<option value="owner" <?= $option == "owner" ? "selected" : "" ?>>Lot Owner</option>
 						</select>
