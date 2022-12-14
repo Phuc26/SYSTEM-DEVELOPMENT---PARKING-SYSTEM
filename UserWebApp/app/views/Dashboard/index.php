@@ -53,6 +53,9 @@
 
 				<!-- ALL: Set up account -->
 				<?php $this->view('Dashboard/buttons/account'); ?>
+
+				<!-- ALL: Set revenue visibility -->
+				<?php $this->view('Dashboard/buttons/visibility'); ?>
 			</div>
 		</div>
 		

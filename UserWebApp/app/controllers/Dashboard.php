@@ -125,6 +125,29 @@ class Dashboard extends \app\core\Controller {
 		}
 	}
 
+	function confirm_enable($lot_id) {
+		$user = new \app\models\User();
+		$user = $user->get($_SESSION['username']);
+
+		$lot = new \app\models\Lot();
+		$lot = $lot->get($lot_id);
+
+		if (!isset($_POST['action'])) {
+			$this->view('Dashboard/confirm_enable', $lot);
+		} else {
+			if (password_verify($_POST['password'], $user->password_hash)) {
+				$lot->disabled = 0;
+				$lot->end_date = NULL;
+			 	$lot->changeStatus();
+			 	header('location:/Dashboard/confirm_enable');
+			 	echo '<script>alert("This lot has been enabled.")</script>';
+			} else {
+				$this->view('Dashboard/confirm_enable', $lot);
+				echo '<script>alert("Incorrect Password.")</script>';
+			}
+		}
+	}
+
 	function setup_account() {	
 		if (!isset($_POST['action'])) {
 			$this->view('Dashboard/setup_account');
