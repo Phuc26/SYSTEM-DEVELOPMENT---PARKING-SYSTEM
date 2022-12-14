@@ -151,22 +151,4 @@ class Dashboard extends \app\core\Controller {
 			}
 		}
 	}
-
-	function searchView() {
-		$lots = new \app\models\Lot();
-		$result = $lots->searchLots($_POST['search']);
-		$this->view('Dashboard/view_lot', $result);
-  	}
-
-  	function searchUpdate() {
-		$lots = new \app\models\Lot();
-		$result = $lots->searchLots($_POST['search']);
-		$this->view('Dashboard/update_lot', $result);
-  	}
-
-  	function searchDisable() {
-		$lots = new \app\models\Lot();
-		$result = $lots->searchLots($_POST['search']);
-		$this->view('Dashboard/disable_lot', $result);
-  	}	
 }

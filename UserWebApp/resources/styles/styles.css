@@ -1,3 +1,7 @@
+body {
+    overflow-y: scroll;
+}
+
 .card {
     transition: all 0.2s ease;
     cursor: pointer;

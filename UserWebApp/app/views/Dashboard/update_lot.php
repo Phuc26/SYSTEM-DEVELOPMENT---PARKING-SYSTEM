@@ -16,9 +16,17 @@
 
 		<div class="container-lg">
 			<h1>Update a Parking Lot's Information</h1><hr>
+
+			<?php
+			if (isset($_POST['search'])) {
+				$lots = new \app\models\Lot();
+				$data = $lots->searchLots($_POST['search']);
+			}
+			?>
+
 			<div class="row align-items-center">
 				<div class="col-md-4 pb-2">
-					<form method="post" action="/Dashboard/searchDisable">
+					<form method="post" action="">
 						<?php $this->view('shared/search') ?>
 					</form>
 				</div>
