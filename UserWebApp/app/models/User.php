@@ -18,6 +18,22 @@ class User extends \app\core\Model {
 		return $STMT->fetch() >= 1;
 	}
 
+	function getAll() {
+		$SQL = 'SELECT * FROM user';
+		$STMT = self::$_connection->prepare($SQL);
+		$STMT->execute();
+		$STMT->setFetchMode(\PDO::FETCH_CLASS, "app\models\User");
+		return $STMT->fetchAll();
+	}
+
+	function getId($user_id) {
+		$SQL = 'SELECT * FROM user WHERE user_id = :user_id';
+		$STMT = self::$_connection->prepare($SQL);
+		$STMT->execute(['user_id'=>$user_id]);
+		$STMT->setFetchMode(\PDO::FETCH_CLASS, "app\models\User");
+		return $STMT->fetch();
+	}
+
 	function get($username) {
 		$SQL = 'SELECT * FROM user WHERE username = :username';
 		$STMT = self::$_connection->prepare($SQL);
@@ -88,4 +104,18 @@ class User extends \app\core\Model {
 		$STMT = self::$_connection->prepare($SQL);
 		$STMT->execute(['phone_number'=>$this->phone_number, 'user_id'=>$this->user_id]);
 	}
+
+	function changeStatus() {
+		$SQL = 'UPDATE user SET seeRevenue = :seeRevenue WHERE user_id = :user_id';
+		$STMT = self::$_connection->prepare($SQL);
+		$STMT->execute(['seeRevenue'=>$this->seeRevenue, 'user_id'=>$this->user_id]);
+	}
+
+	function searchUsers($text) {
+		$SQL = "SELECT * FROM user WHERE username LIKE '%$text%' OR first_name LIKE '%$text%' OR last_name LIKE '%$text%' ORDER BY user_id";
+        $STMT = self::$_connection->prepare($SQL);
+        $STMT->execute();
+        $STMT->setFetchMode(\PDO::FETCH_CLASS, "app\models\User");
+        return $STMT->fetchAll();
+    }
 }
