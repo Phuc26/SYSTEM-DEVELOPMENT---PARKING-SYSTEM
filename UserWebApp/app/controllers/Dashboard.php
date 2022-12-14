@@ -139,7 +139,7 @@ class Dashboard extends \app\core\Controller {
 				$lot->disabled = 0;
 				$lot->end_date = NULL;
 			 	$lot->changeStatus();
-			 	header('location:/Dashboard/confirm_enable');
+			 	header('location:/Dashboard/disable_lot');
 			 	echo '<script>alert("This lot has been enabled.")</script>';
 			} else {
 				$this->view('Dashboard/confirm_enable', $lot);
