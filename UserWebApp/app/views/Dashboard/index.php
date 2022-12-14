@@ -19,7 +19,8 @@
 			<h1>Dashboard</h1><hr>
 
 			<!-- First row -->
-			<div class="row justify-content-center">
+			<div class="row pb-2">
+				<h2 class="text-muted">Parking lots</h2>
 
 				<!-- ADMIN / TECHNICAN: Set up lot -->
 				<?php if ($_SESSION['role'] == 'admin' || $_SESSION['role'] == 'technician') { $this->view('Dashboard/buttons/setup'); } ?>
@@ -35,7 +36,8 @@
 			</div>
 
 			<!-- Second row -->
-			<div class="row justify-content-center pb-4"> 
+			<div class="row pb-2"> 
+				<h2 class="text-muted">Revenue</h2>
 
 				<!-- ADMIN / TECHNICAN / MANAGER: Change rates -->
 				<?php if ($_SESSION['role'] != 'owner') { $this->view('Dashboard/buttons/rates'); } ?>
@@ -43,8 +45,17 @@
 				<!-- IF seeRevenue == 1: View revenue -->
 				<?php if ($_SESSION['seeRevenue'] == 1) { $this->view('Dashboard/buttons/revenue'); } ?>
 
-				<!-- ADMIN / TECHNICAN: Set up account -->
-				<?php if ($_SESSION['role'] == 'admin' || $_SESSION['role'] == 'technician') { $this->view('Dashboard/buttons/account'); } ?>
+			</div>
+
+			<!-- Third row -->
+			<div class="row pb-4"> 
+				<h2 class="text-muted">Users</h2>
+
+				<!-- ALL: Set up account -->
+				<?php $this->view('Dashboard/buttons/account'); ?>
+
+				<!-- ALL: Set revenue visibility -->
+				<?php $this->view('Dashboard/buttons/visibility'); ?>
 			</div>
 		</div>
 		

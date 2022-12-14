@@ -17,9 +17,16 @@
 		<div class="container-lg">
 			<h1>View a Parking Lot's Information</h1><hr>
 			
+			<?php
+			if (isset($_POST['search'])) {
+				$lots = new \app\models\Lot();
+				$data = $lots->searchLots($_POST['search']);
+			}
+			?>
+
 			<div class="row align-items-center">
 				<div class="col-md-4 pb-2">
-					<form method="post" action="/Dashboard/searchView">
+					<form method="post" action="">
 						<?php $this->view('shared/search') ?>
 					</form>
 				</div>
@@ -47,7 +54,7 @@
 						</thead>
 
 						<tbody>
-							<?php 
+							<?php
 							foreach ($data as $lot) {
 								$isDisabled = $lot->disabled == 0 ? 'No' : 'Yes';
 								$endDate = $lot->end_date == null ? 'None' : $lot->end_date;

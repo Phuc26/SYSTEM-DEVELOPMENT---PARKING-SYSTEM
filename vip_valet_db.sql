@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 07, 2022 at 02:45 PM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 8.1.2
+-- Generation Time: Dec 14, 2022 at 05:07 AM
+-- Server version: 10.4.25-MariaDB
+-- PHP Version: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -43,14 +43,33 @@ CREATE TABLE `daily_revenue` (
 CREATE TABLE `lot` (
   `lot_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `lot_name` varchar(80) NOT NULL,
+  `lot_name` varchar(50) NOT NULL,
   `address` varchar(50) NOT NULL,
   `city` varchar(50) NOT NULL,
   `province` varchar(50) NOT NULL,
   `postal_code` varchar(7) NOT NULL,
   `disabled` tinyint(1) NOT NULL DEFAULT 0,
-  `start_date` date NOT NULL,
-  `end_date` date DEFAULT NULL
+  `start_date` datetime NOT NULL DEFAULT current_timestamp(),
+  `end_date` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `lot`
+--
+
+INSERT INTO `lot` (`lot_id`, `user_id`, `lot_name`, `address`, `city`, `province`, `postal_code`, `disabled`, `start_date`, `end_date`) VALUES
+(1, 3, 'Los Pollos Hermanos Parking Lot', '712 Red Bark Lane,  Henderson', 'Clark County, Springfield', 'Nevada', '111 666', 0, '2022-12-14 00:00:00', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `manager`
+--
+
+CREATE TABLE `manager` (
+  `manager_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `lot_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -75,9 +94,10 @@ CREATE TABLE `monthly_revenue` (
 CREATE TABLE `rates` (
   `rate_id` int(11) NOT NULL,
   `lot_id` int(11) NOT NULL,
-  `start_date_time` datetime NOT NULL,
-  `end_date_time` datetime NOT NULL,
-  `rate_per_hour` decimal(4,2) NOT NULL
+  `start_time` time NOT NULL,
+  `start_date` datetime NOT NULL,
+  `end_date` datetime NOT NULL,
+  `rate_per_hour` decimal(5,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -92,8 +112,7 @@ CREATE TABLE `transactions` (
   `amount_paid` decimal(8,2) NOT NULL,
   `start_date_time` datetime NOT NULL,
   `end_date_time` datetime NOT NULL,
-  `date_time` datetime NOT NULL,
-  `plate_number` int(7) NOT NULL,
+  `plate_number` varchar(7) NOT NULL,
   `authorization_code` varchar(12) NOT NULL,
   `processor_name` varchar(15) NOT NULL,
   `card_mask` int(4) NOT NULL,
@@ -115,7 +134,7 @@ CREATE TABLE `user` (
   `last_name` varchar(50) NOT NULL,
   `email` varchar(80) NOT NULL,
   `phone_number` varchar(20) NOT NULL,
-  `role` enum('admin','technician','manager','owner') NOT NULL,
+  `role` enum('admin','technician','manager','owner') NOT NULL DEFAULT 'technician',
   `seeRevenue` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -125,8 +144,9 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`user_id`, `username`, `password_hash`, `first_name`, `last_name`, `email`, `phone_number`, `role`, `seeRevenue`) VALUES
 (1, 'admin', '$2y$10$BbFwuBn9.XdNa/v/nBezk.vMgOkEfLsUAwSmg7BgbTNaOGhsR44mG', 'Walter', 'Hartwell White', 'dr.heisenberg@gmail.com', '051-442-1752', 'admin', 1),
-(2, 'technician', '$2y$10$BnAdv3PBonxG6SVnFRHJeepqbqyke33Z5mNsPOy9ol8.oxZQkXixW', 'Jesse', 'Pinkman', 'yojesse.pman@hotmail.com', '942-155-7231', 'owner', 1),
-(3, 'owner', '$2y$10$fhTRGdME2a9/MimyEkI/4.BzBNxvF7ZvqoROkyNjokGLubLf4TOja', 'Gus', 'Fring', 'mistergus@gmail.com', '541-228-9562', 'technician', 1);
+(2, 'technician', '$2y$10$BnAdv3PBonxG6SVnFRHJeepqbqyke33Z5mNsPOy9ol8.oxZQkXixW', 'Jesse', 'Pinkman', 'yojesse.pman@hotmail.com', '942-155-7231', 'technician', 1),
+(3, 'owner', '$2y$10$fhTRGdME2a9/MimyEkI/4.BzBNxvF7ZvqoROkyNjokGLubLf4TOja', 'Gus', 'Fring', 'mistergus@gmail.com', '541-228-9562', 'owner', 1),
+(4, 'owner2', '$2y$10$UjuaVUEyxenvsxLnSQ3YPuMbAfBbRy2V.bYxY2KvelQ/z6oN0kT2.', 'Breaking', 'Good', '', '000-000-0000', 'owner', 1);
 
 --
 -- Indexes for dumped tables
@@ -137,7 +157,7 @@ INSERT INTO `user` (`user_id`, `username`, `password_hash`, `first_name`, `last_
 --
 ALTER TABLE `daily_revenue`
   ADD PRIMARY KEY (`daily_revenue_id`),
-  ADD KEY `lot_daily_revenu_lot_id_FK` (`lot_id`);
+  ADD KEY `lot_daily_revenue_lot_id_FK` (`lot_id`) USING BTREE;
 
 --
 -- Indexes for table `lot`
@@ -145,6 +165,14 @@ ALTER TABLE `daily_revenue`
 ALTER TABLE `lot`
   ADD PRIMARY KEY (`lot_id`),
   ADD KEY `user_lot_user_id_FK` (`user_id`);
+
+--
+-- Indexes for table `manager`
+--
+ALTER TABLE `manager`
+  ADD PRIMARY KEY (`manager_id`),
+  ADD KEY `manager_user_user_id_FK` (`user_id`),
+  ADD KEY `manager_lot_lot_id_FK` (`lot_id`);
 
 --
 -- Indexes for table `monthly_revenue`
@@ -187,7 +215,13 @@ ALTER TABLE `daily_revenue`
 -- AUTO_INCREMENT for table `lot`
 --
 ALTER TABLE `lot`
-  MODIFY `lot_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `lot_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `manager`
+--
+ALTER TABLE `manager`
+  MODIFY `manager_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `monthly_revenue`
@@ -211,7 +245,7 @@ ALTER TABLE `transactions`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables
@@ -228,6 +262,13 @@ ALTER TABLE `daily_revenue`
 --
 ALTER TABLE `lot`
   ADD CONSTRAINT `user_lot_user_id_FK` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
+
+--
+-- Constraints for table `manager`
+--
+ALTER TABLE `manager`
+  ADD CONSTRAINT `manager_lot_lot_id_FK` FOREIGN KEY (`lot_id`) REFERENCES `lot` (`lot_id`),
+  ADD CONSTRAINT `manager_user_user_id_FK` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
 
 --
 -- Constraints for table `monthly_revenue`

@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, inital-scale=1, shrink-to-fit=no">
-		<title>Disable</title>
+		<title>Enable / Disable</title>
 		<link rel="stylesheet" type="text/css" href="/resources/styles/styles.css">
 
 		<!-- Bootstrap CSS -->
@@ -15,17 +15,24 @@
 		<?php $this->view('shared/navbar'); ?>
 
 		<div class="container-lg">
-			<h1>Disable Services of a Parking Lot</h1><hr>
+			<h1>Enable / Disable Services of a Parking Lot</h1><hr>
+
+			<?php
+			if (isset($_POST['search'])) {
+				$lots = new \app\models\Lot();
+				$data = $lots->searchLots($_POST['search']);
+			}
+			?>
+
 			<div class="row align-items-center">
 				<div class="col-md-4 pb-2">
-					<form method="post" action="/Dashboard/searchDisable">
+					<form method="post" action="">
 						<?php $this->view('shared/search') ?>
 					</form>
 				</div>
 
 				<div class="col-md-4 pb-2">
-					<?php $i = 0; foreach ($data as $lot) { if ($lot->disabled == 0) { $i++; } } ?>
-					<b>Results - <span id="totalLots"><?= $i ?></span></b>
+					<b>Results - <span id="totalLots"><?= count($data) ?></span></b>
 				</div>
 			</div>
 
@@ -35,20 +42,31 @@
 						<thead>
 							<tr>
 								<th width="5%">ID</th>
-								<th width="95%">Parking Lot Name</th>
+								<th width="90%">Parking Lot Name</th>
+								<th width="5%">Disabled?</th>
 							</tr>
 						</thead>
 
 						<tbody>
 							<?php 
-							foreach ($data as $lot) {
+							foreach ($data as $lot) {									
+								$status = $lot->disabled == 0 ? 'No' : 'Yes';
 								if ($lot->disabled == 0) {
 									echo 
 									"<tr>
 										<td><a href='/Dashboard/confirm_disable/$lot->lot_id'>$lot->lot_id</a></td>
 										<td><a href='/Dashboard/confirm_disable/$lot->lot_id'>$lot->lot_name</a></td>
+										<td><a href='/Dashboard/confirm_disable/$lot->lot_id'>No</a></td>
+									</tr>";
+								} else {
+									echo 
+									"<tr>
+										<td><a href='/Dashboard/confirm_enable/$lot->lot_id'>$lot->lot_id</a></td>
+										<td><a href='/Dashboard/confirm_enable/$lot->lot_id'>$lot->lot_name</a></td>
+										<td><a href='/Dashboard/confirm_enable/$lot->lot_id'>Yes</a></td>
 									</tr>";
 								}
+								
 							} ?>
 						</tbody>
 					</table>

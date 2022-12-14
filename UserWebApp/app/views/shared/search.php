@@ -1,5 +1,5 @@
 <div class="input-group">
-    <input type="text" class="form-control" name="search" placeholder="Search..." />
+    <input type="text" class="form-control" name="search" value="<?php echo isset($_POST["search"]) ? $_POST["search"] : ''; ?>" placeholder="Search..." />
   	<button type="submit" class="btn btn-secondary">
     	<i>
     		<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
