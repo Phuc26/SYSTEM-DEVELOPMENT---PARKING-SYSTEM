@@ -13,7 +13,7 @@
    <body>
       <div class="container-xl text-center">
          <div class="row my-4 d-inline-flex text-start">
-            <div class="col-md" align="center">
+            <div class="col-md" alig="center">
                <img class="mb-4" src="/resources/images/logo.png" width="50%" alt="VIP Valet Logo">
                <h3>Reserve Your Parking</h3> <hr>
             </div>
