@@ -23,7 +23,7 @@
 
             <div class="col-md px-2 mb-5">
                <h2 class="text-muted">License plate</h2>
-               <input type="text" class="form-control" name="license" placeholder="1A1 B2B" pattern="[A-Za-z0-9]" minlength="2" maxlength="8" required>
+               <input type="text" class="form-control" name="license" placeholder="1A1 B2B" pattern="^[ A-Za-z0-9]+$" minlength="2" maxlength="8" required>
             </div>
 
             <div class="col-md px-2 mb-5">

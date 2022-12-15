@@ -241,7 +241,6 @@ class Dashboard extends \app\core\Controller {
 			if (password_verify($_POST['password'], $user->password_hash)) {
 				$user->seeRevenue = 1;
 			 	$user->changeStatus();
-			 	$user->insert();
 			 	header('location:/Dashboard/revenue_visibility');
 			} elseif ($user->exists()) {
 				$this->view('Dashboard/enable_visibility');
