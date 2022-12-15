@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 14, 2022 at 05:07 AM
+-- Generation Time: Dec 15, 2022 at 05:41 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -58,19 +58,11 @@ CREATE TABLE `lot` (
 --
 
 INSERT INTO `lot` (`lot_id`, `user_id`, `lot_name`, `address`, `city`, `province`, `postal_code`, `disabled`, `start_date`, `end_date`) VALUES
-(1, 3, 'Los Pollos Hermanos Parking Lot', '712 Red Bark Lane,  Henderson', 'Clark County, Springfield', 'Nevada', '111 666', 0, '2022-12-14 00:00:00', NULL);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `manager`
---
-
-CREATE TABLE `manager` (
-  `manager_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `lot_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+(1, 3, 'Los Pollos Hermanos Parking Lot', '712 Red Bark Lane,  Henderson', 'Clark County, Springfield', 'Nevada', '111 666', 0, '2022-12-14 00:00:00', NULL),
+(2, 12, 'Saul Goodman Lot', '123 Three Dee', 'Rotatte', 'Henri-Blueassa', 'ICE 612', 0, '2022-12-22 00:00:00', NULL),
+(3, 12, 'Taught The Laws Firm Lot', 'Meesseeks', 'Rick', 'Morty', '567 12S', 0, '2022-12-29 00:00:00', NULL),
+(4, 3, 'Frozen Elsa Disney Lot', 'Disney Land 4', 'Maine', 'Florida', 'D1S N3Y', 0, '2022-12-29 00:00:00', NULL),
+(5, 3, 'Farmer\'s Parking Co.', '521 Jean Talon', 'Montreal', 'Quebec', '1GH 0T4', 1, '2022-12-22 00:00:00', '2022-12-28 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -143,10 +135,12 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `username`, `password_hash`, `first_name`, `last_name`, `email`, `phone_number`, `role`, `seeRevenue`) VALUES
-(1, 'admin', '$2y$10$BbFwuBn9.XdNa/v/nBezk.vMgOkEfLsUAwSmg7BgbTNaOGhsR44mG', 'Walter', 'Hartwell White', 'dr.heisenberg@gmail.com', '051-442-1752', 'admin', 1),
-(2, 'technician', '$2y$10$BnAdv3PBonxG6SVnFRHJeepqbqyke33Z5mNsPOy9ol8.oxZQkXixW', 'Jesse', 'Pinkman', 'yojesse.pman@hotmail.com', '942-155-7231', 'technician', 1),
-(3, 'owner', '$2y$10$fhTRGdME2a9/MimyEkI/4.BzBNxvF7ZvqoROkyNjokGLubLf4TOja', 'Gus', 'Fring', 'mistergus@gmail.com', '541-228-9562', 'owner', 1),
-(4, 'owner2', '$2y$10$UjuaVUEyxenvsxLnSQ3YPuMbAfBbRy2V.bYxY2KvelQ/z6oN0kT2.', 'Breaking', 'Good', '', '000-000-0000', 'owner', 1);
+(3, 'owner', '$2y$10$fhTRGdME2a9/MimyEkI/4.BzBNxvF7ZvqoROkyNjokGLubLf4TOja', 'Gus', 'Fring', 'mistergus@gmail.com', '541-228-9562', 'owner', 0),
+(9, 'admin', '$2y$10$fhTRGdME2a9/MimyEkI/4.BzBNxvF7ZvqoROkyNjokGLubLf4TOja', 'Walter', 'Hartwell White', 'dr.heisenberg@gmail.com', '555-666-7777', 'admin', 1),
+(10, 'technician', '$2y$10$8I91nuLmuxQwBExFPJCDL.IK6f7FT25ROSUgT0OZkz7ZiICWVGgcO', 'Jesse', 'Pinkman', 'pink.jesman@gmail.com', '111-222-3333', 'technician', 1),
+(11, 'manager', '$2y$10$.S2tnC4yw26S0PM4AUryh.t5.B69KhGKcemuTDOCJXsvpakABEImW', 'Hank', 'Schneider', 'hank.snider@gmail.com', '444-555-8888', 'manager', 1),
+(12, 'owner2', '$2y$10$c9krpHhvYDQXS/wbCAOI3uSgtdq5h1ui2emQJbV0LRU.BIikLzaHq', 'Gouache', 'Adolf', 'kerrcaracala@gmail.com', '999-888-7777', 'owner', 1),
+(13, 'owner3', '$2y$10$JTyMm71yaGJ/ruPr1B3Z0eSFWAqgpcE2lRSubpOczFBuQreCCdYK6', 'Ice', 'Cream', 'vanillachocolate@gmail.com', '567-890-1234', 'owner', 1);
 
 --
 -- Indexes for dumped tables
@@ -165,14 +159,6 @@ ALTER TABLE `daily_revenue`
 ALTER TABLE `lot`
   ADD PRIMARY KEY (`lot_id`),
   ADD KEY `user_lot_user_id_FK` (`user_id`);
-
---
--- Indexes for table `manager`
---
-ALTER TABLE `manager`
-  ADD PRIMARY KEY (`manager_id`),
-  ADD KEY `manager_user_user_id_FK` (`user_id`),
-  ADD KEY `manager_lot_lot_id_FK` (`lot_id`);
 
 --
 -- Indexes for table `monthly_revenue`
@@ -215,13 +201,7 @@ ALTER TABLE `daily_revenue`
 -- AUTO_INCREMENT for table `lot`
 --
 ALTER TABLE `lot`
-  MODIFY `lot_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `manager`
---
-ALTER TABLE `manager`
-  MODIFY `manager_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `lot_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `monthly_revenue`
@@ -245,7 +225,7 @@ ALTER TABLE `transactions`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Constraints for dumped tables
@@ -262,13 +242,6 @@ ALTER TABLE `daily_revenue`
 --
 ALTER TABLE `lot`
   ADD CONSTRAINT `user_lot_user_id_FK` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
-
---
--- Constraints for table `manager`
---
-ALTER TABLE `manager`
-  ADD CONSTRAINT `manager_lot_lot_id_FK` FOREIGN KEY (`lot_id`) REFERENCES `lot` (`lot_id`),
-  ADD CONSTRAINT `manager_user_user_id_FK` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
 
 --
 -- Constraints for table `monthly_revenue`
