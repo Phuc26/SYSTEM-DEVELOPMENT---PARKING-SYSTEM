@@ -75,7 +75,7 @@ class Lot extends \app\core\Model {
 	}
 
 	function searchLots($text) {
-		$SQL = "SELECT * FROM lot WHERE lot_name LIKE '%$text%' ORDER BY lot_id DESC";
+		$SQL = "SELECT * FROM lot WHERE lot_name LIKE '%$text%' ORDER BY lot_id";
         $STMT = self::$_connection->prepare($SQL);
         $STMT->execute();
         $STMT->setFetchMode(\PDO::FETCH_CLASS, "app\models\Lot");

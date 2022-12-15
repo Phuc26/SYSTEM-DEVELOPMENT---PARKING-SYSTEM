@@ -8,6 +8,8 @@ class Dashboard extends \app\core\Controller {
 		$this->view('Dashboard/index');
 	}
 
+	#[\app\filters\NoManager]
+	#[\app\filters\NoOwner]
 	function setup_lot() {
 		$user = new \app\models\User();
 		$owners = $user->getOwners();
@@ -48,12 +50,15 @@ class Dashboard extends \app\core\Controller {
 		}
 	}
 
+	#[\app\filters\NoManager]
+	#[\app\filters\NoOwner]
 	function update_lot() {	
 		$lots = new \app\models\Lot();
 		$lots = $lots->getAll();
 		$this->view('Dashboard/update_lot', $lots);
 	}
 
+	#[\app\filters\Revenue]
 	function view_daily_revenue() {
 		$dailyRevenue = new \app\models\Revenue();
 		$dailyRevenue = $dailyRevenue->getDailyRevenue();
@@ -62,6 +67,7 @@ class Dashboard extends \app\core\Controller {
 		$this->view('Dashboard/view_revenue');
 	}
 
+	#[\app\filters\Revenue]
 	function view_monthly_revenue() {
 		$revenue = new \app\models\Revenue();
 		$dailyRevenue = $dailyRevenue->getDailyRevenue();
@@ -70,6 +76,8 @@ class Dashboard extends \app\core\Controller {
 		$this->view('Dashboard/view_revenue');
 	}
 
+	#[\app\filters\NoManager]
+	#[\app\filters\NoOwner]
 	function confirm_update($lot_id) {
 		$user = new \app\models\User();
 		$user = $user->get($_SESSION['username']);
@@ -96,12 +104,16 @@ class Dashboard extends \app\core\Controller {
 		}
 	}
 
+	#[\app\filters\NoManager]
+	#[\app\filters\NoOwner]
 	function disable_lot() {
 		$lots = new \app\models\Lot();
 		$lots = $lots->getAll();
 		$this->view('Dashboard/disable_lot', $lots);
 	}
 
+	#[\app\filters\NoManager]
+	#[\app\filters\NoOwner]
 	function confirm_disable($lot_id) {
 		$user = new \app\models\User();
 		$user = $user->get($_SESSION['username']);
@@ -125,6 +137,8 @@ class Dashboard extends \app\core\Controller {
 		}
 	}
 
+	#[\app\filters\NoManager]
+	#[\app\filters\NoOwner]
 	function confirm_enable($lot_id) {
 		$user = new \app\models\User();
 		$user = $user->get($_SESSION['username']);
@@ -139,7 +153,7 @@ class Dashboard extends \app\core\Controller {
 				$lot->disabled = 0;
 				$lot->end_date = NULL;
 			 	$lot->changeStatus();
-			 	header('location:/Dashboard/confirm_enable');
+			 	header('location:/Dashboard/disable_lot');
 			 	echo '<script>alert("This lot has been enabled.")</script>';
 			} else {
 				$this->view('Dashboard/confirm_enable', $lot);
@@ -148,6 +162,8 @@ class Dashboard extends \app\core\Controller {
 		}
 	}
 
+	#[\app\filters\NoManager]
+	#[\app\filters\NoOwner]
 	function setup_account() {	
 		if (!isset($_POST['action'])) {
 			$this->view('Dashboard/setup_account');
@@ -170,6 +186,68 @@ class Dashboard extends \app\core\Controller {
 				echo '<script>alert("A user is already using that username.")</script>';
 			} else {
 				$this->view('Dashboard/setup_account');
+				echo '<script>alert("Passwords do not match.")</script>';
+			}
+		}
+	}
+
+	#[\app\filters\Revenue]
+	#[\app\filters\NoTechnician]
+	#[\app\filters\NoManager]
+	#[\app\filters\NoOwner]
+	function revenue_visibility() {	
+		$users = new \app\models\User();
+		$users = $users->getAll();
+		$this->view('Dashboard/revenue_visibility', $users);
+	}
+
+	#[\app\filters\Revenue]
+	#[\app\filters\NoTechnician]
+	#[\app\filters\NoManager]
+	#[\app\filters\NoOwner]
+	function disable_visibility($user_id) {	
+		if (!isset($_POST['action'])) {
+			$this->view('Dashboard/disable_visibility');
+		} else {
+			$user = new \app\models\User();
+			$user = $user->getId($user_id);
+
+			if (password_verify($_POST['password'], $user->password_hash)) {
+				$user->seeRevenue = 0;
+			 	$user->changeStatus();
+			 	$user->insert();
+			 	header('location:/Dashboard/revenue_visibility');
+			} elseif ($user->exists()) {
+				$this->view('Dashboard/disable_visibility');
+				echo '<script>alert("A user is already using that username.")</script>';
+			} else {
+				$this->view('Dashboard/disable_visibility');
+				echo '<script>alert("Passwords do not match.")</script>';
+			}
+		}
+	}
+
+	#[\app\filters\Revenue]
+	#[\app\filters\NoTechnician]
+	#[\app\filters\NoManager]
+	#[\app\filters\NoOwner]
+	function enable_visibility($user_id) {	
+		if (!isset($_POST['action'])) {
+			$this->view('Dashboard/enable_visibility');
+		} else {
+			$user = new \app\models\User();
+			$user = $user->getId($user_id);
+
+			if (password_verify($_POST['password'], $user->password_hash)) {
+				$user->seeRevenue = 1;
+			 	$user->changeStatus();
+			 	$user->insert();
+			 	header('location:/Dashboard/revenue_visibility');
+			} elseif ($user->exists()) {
+				$this->view('Dashboard/enable_visibility');
+				echo '<script>alert("A user is already using that username.")</script>';
+			} else {
+				$this->view('Dashboard/enable_visibility');
 				echo '<script>alert("Passwords do not match.")</script>';
 			}
 		}

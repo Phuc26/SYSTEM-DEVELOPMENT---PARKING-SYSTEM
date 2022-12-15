@@ -55,7 +55,7 @@
 				<?php $this->view('Dashboard/buttons/account'); ?>
 
 				<!-- ALL: Set revenue visibility -->
-				<?php $this->view('Dashboard/buttons/visibility'); ?>
+				<?php if ($_SESSION['role'] == 'admin') { $this->view('Dashboard/buttons/visibility'); } ?>
 			</div>
 		</div>
 		

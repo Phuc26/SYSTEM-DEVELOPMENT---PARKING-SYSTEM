@@ -5,7 +5,7 @@
 		</svg>
 		<div class="card-body text-center">
 			<p class="card-text">Set Revenue Visibility</p>
-			<?php echo "<a href='/Dashboard/revenue_visiblity' class='stretched-link'></a>" ?>
+			<?php echo "<a href='/Dashboard/revenue_visibility' class='stretched-link'></a>" ?>
 		</div>
 	</div>
 </div>
